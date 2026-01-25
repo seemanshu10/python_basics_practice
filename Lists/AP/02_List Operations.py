@@ -3,7 +3,6 @@
 
 """
 
-
 list_Num = input("Enter the list of integers seperated by spaces : ")
 
 num_list = list(map(int ,list_Num.split()))
@@ -18,10 +17,12 @@ print ("MIN number is : ",min_num)
 
 sum_total = sum(num_list)
 print ("SUM of list is : ",sum_total)
-# output : The list Entered is : [1, 45, 6, 4, 8, 4]
-# MAX number is :  45
+# output : The list Entered is : [3, 2, 122, 4, 6, 3, 1]
+# MAX number is :  122
 # MIN number is :  1
-# SUM of list is :  68
+# SUM of list is :  141
 
 rever_list = num_list[::-1]
 print("Reversed list is :", rever_list)
+
+# Reversed list is : [1, 3, 6, 4, 122, 2, 3]

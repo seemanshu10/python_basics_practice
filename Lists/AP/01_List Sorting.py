@@ -16,5 +16,5 @@ print ("The Decssending Order :",dsc_sort)
 """
 Enter the list of integers seperated by spaces : 3 1 88 4 2 6 4 
 The Acsending Order : [1, 2, 3, 4, 4, 6, 88]
-The Decssending Order : [88, 6, 4, 4, 3, 2, 1]
+The Decsending Order : [88, 6, 4, 4, 3, 2, 1]
 """

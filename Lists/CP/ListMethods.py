@@ -41,7 +41,6 @@ print(movies)
 # Output : ['Inception', 'Titanic', 'Matrix', 'Avatar'] 
 
 ne = []
-
 ne.insert(0,"No")
 print(ne)
 # output : ['No']
