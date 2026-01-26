@@ -116,6 +116,7 @@ text = 'a,,b,,c'
 split_text= text.split(",")
 print (split_text)
 
+
 #output : ['a', '', 'b', '', 'c']
 # find to find gives first index  of occurance 
 # multiple occurances 
