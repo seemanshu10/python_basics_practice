@@ -20,10 +20,10 @@ norm_Comment = re_Spaces.lower()
 
 # determine categories 
 
-if ("excellent" in norm_Comment) or ("great" in norm_Comment) or ("good" in norm_Comment):
+if "excellent" in norm_Comment or "great" in norm_Comment or "good" in norm_Comment:
     category = "Positive"
 
-elif ("bad" in norm_Comment) or ("worst" in norm_Comment) or ("poor" in norm_Comment):
+elif "bad" in norm_Comment or "worst" in norm_Comment or "poor" in norm_Comment:
     category = "Negative"
 
 else:

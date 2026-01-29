@@ -53,3 +53,14 @@ print(car_items)
 
 # Output : dict_items([('brand', 'Toyota'),('model', 'Camry'), ('year', 2021)])
 
+dict = {
+    "Brand":"Closadheas",
+    "Brasd":"Cloasds",
+    "Brand":"Cloasdas", 
+    "1232es":"Cloasdas", 
+    "asddas":"sadsadsa"
+}
+
+t=dict.items()
+print(t)
+print(type(t))
