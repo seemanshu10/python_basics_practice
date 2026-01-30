@@ -18,6 +18,15 @@ def multiply(a, b):
 
 # divide function
 def divide(a, b):
+    """
+     divide two numbers 
+    
+    :param a: int
+    :param b: int
+
+    return
+    float
+    """
     if b == 0:
         return "Error: Division by zero is not allowed"
     return a / b

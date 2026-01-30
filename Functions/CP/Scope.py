@@ -61,3 +61,86 @@ def greet():
 greet()
 
 # Hello World!
+
+# string Manipulation 
+def convert_to_uppercase (text):
+    upper_text =text.upper()
+    print(upper_text)
+
+convert_to_uppercase("hello, World!")
+
+# HELLO, WORLD!
+
+# Modifying a Global Variable
+
+count = 0 
+
+def incremnt():
+    global count
+    count += 1
+
+incremnt()
+incremnt()
+print(count) # 2
+
+# Using Global Variable in Multiple Function
+
+total = 100
+
+def add_to_total(amount):
+    global total
+    total+=amount
+
+def subtrat_from_total(amount):
+    global total
+    total -= amount
+
+add_to_total(50)
+subtrat_from_total(20)
+print(total)
+# 130
+
+# Global Variable for Game Score
+
+score =0 
+
+def increase_score(points):
+    global score
+    score+=points
+
+def resetScore():
+    global score
+    score =0   
+increase_score(50)
+print("Score After increase: ",score)
+resetScore()
+print("Score Reset: ",score)
+
+#Score After increase:  50
+#Score Reset:  0
+
+# Using Global variable or track state : 
+
+is_running = False
+
+def start_process():
+    global is_running
+    is_running =True
+    print("Process Started.")
+
+def stop_process():
+    global is_running
+    is_running =False
+    print("Process Stopped.")
+
+start_process()
+print("Is Running . ", is_running)
+stop_process()
+print("Is Running . ", is_running)
+
+"""
+Is Running .  True
+Process Stopped.
+Is Running .  False
+"""
+

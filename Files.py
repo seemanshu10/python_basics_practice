@@ -2,5 +2,6 @@
 Docstring for Files
 """
 
-file = open('Test.py',"r")
-print(file)
+with open("example.txt","r") as file:
+    content = file.read()
+    print(content)
