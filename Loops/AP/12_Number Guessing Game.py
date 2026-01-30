@@ -4,6 +4,8 @@ number guessing game where the computer randomly selects a number between 1 and 
 and the user has to guess it in as few attempts as possible. 
 Provide feedback if the guess is too high or too low.
 """
+
+# use list.choice in this instead 
 import random
 # computer selects random num ftom 1 to 50 
 random_num = random.randint(1,50)
