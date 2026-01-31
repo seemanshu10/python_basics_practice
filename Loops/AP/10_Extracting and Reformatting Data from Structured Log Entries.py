@@ -22,20 +22,20 @@ parts = log_entry.split("] [")
 values = []
 
 for part in parts:
-    # 2. Remove brackets
+    # Remove brackets
     cleaned = part.replace("[", "").replace("]", "").strip()
     
-    # 3. Split key and value
+    #Split key and value
     colon_pos = cleaned.find(":")
     
-    # 4. Slice out only the value
+    #Slice out only the value
     value = cleaned[colon_pos + 1:]
     values.append(value)
 
 # Assign extracted values
 user_id, status, action, timestamp = values
 
-# 5. Print formatted report
+#  Print formatted report
 print("\n" + "=" * 40)
 print("LOG SUMMARY")
 print("-" * 40)
