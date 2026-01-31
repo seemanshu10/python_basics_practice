@@ -10,22 +10,41 @@ Use string operations to:
 • Display the final log summary with consistent alignment using .ljust() or .rjust().
 """
 
-# Ask the user to enter the log entry
-log_entry = input("Enter log entry: ")
+# Prompt user for log entry
+log_entry = input("Enter log entry: ").strip()
 
-# Input Crireria [user_id:12345] [status:active] [action:login] [time:10:45AM]
+# Example expected format:
+# [user_id:12345] [status:active] [action:login] [time:10:45AM]
 
-# split log into parts 
-splitParts = log_entry.split("] [")
-print(splitParts) 
+# 1. Split the log into individual components
+parts = log_entry.split("] [")
 
-# remove brackets from List 
-remove_Bracket = []
-for part in splitParts:
-    part = part.replace("[","").replace("]","")
-    remove_Bracket.append(part)
+values = []
 
-print(remove_Bracket)
+for part in parts:
+    # 2. Remove brackets
+    cleaned = part.replace("[", "").replace("]", "").strip()
+    
+    # 3. Split key and value
+    colon_pos = cleaned.find(":")
+    
+    # 4. Slice out only the value
+    value = cleaned[colon_pos + 1:]
+    values.append(value)
 
-# empty data 
-data = {}
+# Assign extracted values
+user_id, status, action, timestamp = values
+
+# 5. Print formatted report
+print("\n" + "=" * 40)
+print("LOG SUMMARY")
+print("-" * 40)
+
+print("User ID".ljust(10) + ":\t" + user_id)
+print("Status".ljust(10) + ":\t" + status)
+print("Action".ljust(10) + ":\t" + action)
+print("Timestamp".ljust(10) + ":\t" + timestamp)
+
+print("-" * 40)
+print("\"All data extracted successfully.\"")
+print("=" * 40)
