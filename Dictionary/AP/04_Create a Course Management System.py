@@ -14,7 +14,7 @@ course_data = {
 print(course_data)
 # Add a new student to the enrolled_students list for CS101.
 course_data["CS101"]["enrolled_students"].append("Charlie")
-Course_Values =course_data["CS101"]["enrolled_students"]
+Course_Values = course_data["CS101"]["enrolled_students"]
 print("Updated CS101:",Course_Values)
 # Updated CS101: ['Alice', 'Bob', 'Charlie']
 
@@ -29,7 +29,7 @@ new_course = {
 course_data.update(new_course)
 print("Added Course ",new_course)
 
-print("\n Full Course data :\n",course_data)
+print("\n Full Course data :\n", course_data)
 # Full Course data :
 # {'CS101': {'instructer': 'Macky', 'Credits': 4, 'enrolled_students': ['Alice', 'Bob', 'Charlie']}, 'MATH123': {'instructer': 'David', 'Credits': '6', 'enrolled_students': ['Ricky', 'Manav', 'Macky']}, 'PHY202': {'instructer': 'Dr. Lee', 'Credits': 3, 'enrolled_students': ['Sam', 'Nina']}}
 

@@ -4,9 +4,7 @@ Create a Python program that prints the numbers from 1 to 50. For multiples of t
 
 # defining fizzBuzz function
 def fizzBuzz():
-
-    # iterate from 1 to 50 
-    for i in range (1,51):
+    for i in range (1,51):  # iterate from 1 to 50 
         if i%3==0 and i%5==0:
             print("FizzBuzz")
         elif i%3==0:
@@ -15,7 +13,6 @@ def fizzBuzz():
             print("Buzz")
         else:
             print(str(i))
-
 
 # calling Fizzbuz 
 fizzBuzz()

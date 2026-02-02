@@ -7,18 +7,18 @@ character in the string. The program should then print the character frequencies
 # Iser input of a string 
 
 user_Input = input("Enter A string : ")
-# removing Spaces 
+
 # Remove all spaces
 user_Input = user_Input.replace(" ", "")
+
 # create an empty dict to store character present in string 
 char_freq={}
+
 for char in user_Input:
     if char in char_freq:
-        # count increment if element exists and is added in dict 
-        char_freq[char]+=1
+        char_freq[char]+=1  # count increment if element exists and is added in dict 
     else:
-        # creating key of char that exists but is new 
-        char_freq[char] =1   
+        char_freq[char] =1  # creating key of char that exists but is new 
 
 # Character frequency output 
 print( "Character Frquencies are : ")

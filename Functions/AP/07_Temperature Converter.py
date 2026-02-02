@@ -3,9 +3,7 @@ Write a Python program that converts a temperature from Celsius to Fahrenheit an
 """
 
 # Defining Celsius To farenhiet 
-
 def celsius_to_fahrenheit(celsius):
-
     """
     Converts Celsius to Fahrenheit
 
@@ -20,7 +18,6 @@ def celsius_to_fahrenheit(celsius):
 # Defining farenhiet to Celsius   
 
 def fahrenheit_to_celsius(fahrenheit):
-
     """
     Converts Celsius to Fahrenheit
 
@@ -34,7 +31,6 @@ def fahrenheit_to_celsius(fahrenheit):
 
 
 def input_user():
-    
     # print ing choices 
     print("Temperature Converter")
     print("1. Celsius to Fahrenheit")

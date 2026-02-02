@@ -18,12 +18,12 @@ while True:
 
     # check if guess is correct 
     if guess == random_num:
-        print(" Congratulations! You guessed the correct number.")
+        print("Congratulations! You guessed the correct number.")
         break
     elif guess > random_num:
-        print(" Too High Guess! try Again!.")
+        print("Too High Guess! try Again!.")
     else :
-        print(" Too Low Guess! try Again!.")
+        print("Too Low Guess! try Again!.")
 """
 Guess a number Between 1 and 50:25
  Too Low Guess! try Again!.

@@ -3,7 +3,6 @@ Write a Python program that prints all prime numbers between 1 and 100.
 A prime number is a number that is only divisible by 1 and itself.
 """
 
-
 def prime():
 
     """

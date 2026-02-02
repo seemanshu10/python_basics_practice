@@ -7,7 +7,7 @@
 list_Num = input("Enter the lsit of integers seperated by spaces : ")
 
 # Covert the input string into a list of integers 
-num_list = map(int ,list_Num.split()) # list_
+num_list = map(int , list_Num.split()) # list_
 lis = list(num_list)
 print (lis)
 # Enter the lsit of integers seperated by spaces : 12 98 4 3 7 

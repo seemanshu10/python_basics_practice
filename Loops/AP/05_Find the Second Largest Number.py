@@ -10,7 +10,7 @@ numbers_input = input("Enter a list of numbers separated by spaces: ")
 
 split_num = numbers_input.split(" ")
 # map explitily converts to int of the split strings 
-nums =map(int,split_num)
+nums = map(int,split_num)
 
 # Ensure there are at least two unique numbers in input 
 unique_numbers = list(set(nums))

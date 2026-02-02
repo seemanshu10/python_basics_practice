@@ -20,12 +20,12 @@ if len(str1) != len(str2):
     print("Not anagrams")
 else:
     
-    list1 = list(str1)
-    list2 = list(str2)
+    first_string = list(str1)
+    second_string = list(str2)
 
-    for ch in list1:
-        if ch in list2:
-            list2.remove(ch)
+    for ch in first_string:
+        if ch in second_string:
+            second_string.remove(ch)
         else:
             print("Not anagrams")
             break

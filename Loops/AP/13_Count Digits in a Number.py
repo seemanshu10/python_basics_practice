@@ -10,13 +10,12 @@ num = int(input("Input A Number: "))
 count = 0
 
 # reverse the num using while 
-while num >0:
-    #digit = num%10 # getting the last digit 
+while num > 0:
     count +=1  # increase count 
     num = num//10 # remove the last digit 
 
 # Print The Count 
-print ("Total Number of Digits:",count)
+print ("Total Number of Digits:", count)
 
 """
 Input A Number: 2354

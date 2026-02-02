@@ -16,7 +16,7 @@ my_dict = {
 user_input = str(input("Enter a key to search:"))
 # checking if user input exist in my_dict
 if user_input in my_dict:
-    print("Value:",my_dict[user_input])
+    print("Value:", my_dict[user_input])
 else:
     print("Error:","Key Not Found in the dictionary.")
 """

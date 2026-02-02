@@ -4,7 +4,6 @@ Python program to calculate the sum of the first n natural numbers, where n is p
 """
 
 def multiply_table(number):
-
     """
     calculate the sum of the first n natural numbers, where n is provided by the user
     """
@@ -19,8 +18,8 @@ def input_user():
     user_input = int(input("Enter a number to print natural numbers :"))
 
     # calling function 
-    sum_num = multiply_table(user_input)
-    print (f"The sum of the first {user_input} natural numbers is {sum_num}.")
+    sum_of_num = multiply_table(user_input)
+    print (f"The sum of the first {user_input} natural numbers is {sum_of_num}.")
 
 input_user()
 

@@ -12,11 +12,11 @@ reversed_num = 0
 # reverse the num using while 
 while num >0:
     digit = num%10 # getting the last digit 
-    reversed_num =reversed_num*10+digit # adding the digit in reversed 
+    reversed_num = reversed_num*10 + digit # adding the digit in reversed 
     num = num//10 # remove the last digit 
 
 # print The Reversed order 
-print ("Reversed Number:",reversed_num)
+print ("Reversed Number:", reversed_num)
 
 """
 Input A Number: 25578

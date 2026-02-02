@@ -11,4 +11,4 @@ squared_list = []
 for num in num_list: 
     squared = num **2
     squared_list.append(squared)
-print (squared_list)
+print(squared_list)

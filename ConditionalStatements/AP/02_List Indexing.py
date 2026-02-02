@@ -11,8 +11,8 @@ color_name = str(input("Enter the color name:"))
 
 # checking if the input is found 
 if color_name in colors:
-    index_colors=colors.index(color_name)
-    print("Color found in colors:",index_colors)
+    index_colors = colors.index(color_name)
+    print("Color found in colors:", index_colors)
 else:
     print("Color not found in colors:")
 

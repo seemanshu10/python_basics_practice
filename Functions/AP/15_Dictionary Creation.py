@@ -9,7 +9,6 @@ def dict_creation(number):
     user_dict ={}
 
     # loop to get each key value pair till the number of keys 
-
     for i in range(number):
         key =  input(f"Enter key {i+1}: ")
         value = input(f"Enter value for '{key}': ")

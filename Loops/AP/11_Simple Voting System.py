@@ -5,29 +5,27 @@ Allow users to vote for different candidates and display the results.
 """
 
 # define a list of canditate names 
-candidates =['Alice','Bob','Charlie']
+candidates = ['Alice','Bob','Charlie']
 
 # initialize a dictionary to store votes for each candidate 
 votes = {}
 for candidate in candidates:
-    # adding List in dictionary initilize all votes to 0 
-    votes[candidate] = 0
+    votes[candidate] = 0    # adding List in dictionary initilize all votes to 0 
 
 # voting Process 
 while True:
-    # User to vote name of Candidates 
-    choice = input("Enter the name of the candidate you want to vote for: ")
+    choice = input("Enter the name of the candidate you want to vote for: ")    # User to vote name of Candidates 
 
     # check if the casditate is valid 
     if choice in votes:
-        votes[choice]+=1
+        votes[choice] += 1
         print ("Vote Recorded.")
     else:
         print("Invalid Candidate. Please Try Again.")
 
     # ask if user want continue voting 
     continue_voting = input("Do you want to continue voting? (Yes/No): ")
-    if continue_voting.lower()!="yes":
+    if continue_voting.lower() != "yes":
         break
 
 # display final result 

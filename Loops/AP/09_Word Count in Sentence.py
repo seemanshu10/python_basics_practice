@@ -17,11 +17,10 @@ word_count = {}
 
 # loop through list check if word is new or not 
 for word in words:
-    # check if the word is already in dictinary count1  if not add in dict 
-    if word in word_count:
-        word_count[word]+=1
+    if word in word_count:  # check if the word is already in dictinary count1 if not add in dict 
+        word_count[word] += 1
     else:
-        word_count[word] =1
+        word_count[word] = 1
 
 # print the results 
 print(word_count)

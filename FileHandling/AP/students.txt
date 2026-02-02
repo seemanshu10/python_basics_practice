@@ -1,0 +1,4 @@
+student_id,student_name,grade1,grade2,grade3
+1,John Doe,85,78,92
+2,Jane Smith,90,88,79
+3,Sam Brown,70,85,82

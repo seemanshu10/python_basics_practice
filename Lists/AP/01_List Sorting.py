@@ -5,13 +5,13 @@ Prints both sorted lists.
 """
 list_Num = input("Enter the list of integers seperated by spaces : ")
 
-num_list = list(map(int ,list_Num.split()))
+num_list = list(map(int , list_Num.split()))
 
 asc_sort = sorted(num_list)
-print ("The Acsending Order :",asc_sort)
+print ("The Acsending Order :", asc_sort)
 
-dsc_sort = sorted(num_list,reverse=True)
-print ("The Decssending Order :",dsc_sort)
+dsc_sort = sorted(num_list, reverse=True)
+print("The Decssending Order :", dsc_sort)
 
 """
 Enter the list of integers seperated by spaces : 3 1 88 4 2 6 4 

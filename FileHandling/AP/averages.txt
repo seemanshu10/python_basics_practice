@@ -1,0 +1,4 @@
+student_name,average_grade
+John Doe,85.0
+Jane Smith,85.67
+Sam Brown,79.0

@@ -8,11 +8,10 @@ def odd_numbers():
 
     # take numbers oone by one till 50 
     for i in range (1,51):
-        if i%2==0:
+        if i%2==0:  #odd numbers 
             continue
         else:
             print(i)
-
 
 # calling Function 
 odd_numbers()

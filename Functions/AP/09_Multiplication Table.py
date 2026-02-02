@@ -4,17 +4,14 @@ of a given number using a for loop. The user will input the number for which the
 """
 
 def multiply_table(number):
-
     """
     Prints the multiplication table of the given number from 1 to 10.
     """
-
     for i in range(1,11):
         result = number *i 
         print(f"{number} x {i} = {result}")
 
 def input_user():
-    
     # taking input of number 
     user_input = int(input("Enter a number to print its multiplication table:"))
 

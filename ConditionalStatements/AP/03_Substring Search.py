@@ -14,8 +14,8 @@ sub_string = str(input("Enter The Substring:"))
 
 # checking the condition 
 if sub_string in main_string:
-    index = main_string.find(sub_string)
-    print("Substring Found at index:",index)
+    substring_index = main_string.find(sub_string)
+    print("Substring Found at substring_index:", substring_index)
 else:
     print("Substring Not Found in the main string")
 
@@ -24,5 +24,5 @@ Output
 
 Enter the string: I love python.
 Enter The Substring:love
-Substring Found at index: 2
+Substring Found at substring_index: 2
 """

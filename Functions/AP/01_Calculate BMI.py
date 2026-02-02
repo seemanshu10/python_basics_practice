@@ -25,11 +25,11 @@ def bmi_category(bmi):
     category 
     """
 
-    if bmi<18.5:
+    if bmi < 18.5:
         return "Underweight"
-    elif 18.5<=bmi<24.9:
+    elif 18.5 <= bmi < 24.9:
         return "Normal weight"
-    elif 25<=bmi<29.9:
+    elif 25 <= bmi < 29.9:
         return "Normal weight"
     else:
         return "Obesity"

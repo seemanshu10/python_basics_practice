@@ -5,18 +5,18 @@
 
 list_Num = input("Enter the list of integers seperated by spaces : ")
 
-num_list = list(map(int ,list_Num.split()))
+num_list = list(map(int , list_Num.split()))
 
 print ("The list Entered is :" , num_list)
 # output : The list Entered is : [1, 3, 9, 7, 2, 1]
 max_num = max(num_list)
-print ("MAX number is : ",max_num)
+print ("MAX number is : ", max_num)
 
 min_num = min(num_list)
-print ("MIN number is : ",min_num)
+print ("MIN number is : ", min_num)
 
 sum_total = sum(num_list)
-print ("SUM of list is : ",sum_total)
+print ("SUM of list is : ", sum_total)
 # output : The list Entered is : [3, 2, 122, 4, 6, 3, 1]
 # MAX number is :  122
 # MIN number is :  1

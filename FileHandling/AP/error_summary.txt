@@ -1,0 +1,3 @@
+FileNotFound : 2
+OutOfMemory : 1
+NullReference : 1

@@ -38,7 +38,6 @@ def input_user():
     num2 = int(input("Enter second number: "))
     
     # Asking user to choose operation
-    
     choice = input("Choose an operation (+, -, *, /): ")
 
     # Performing calculation based on choice

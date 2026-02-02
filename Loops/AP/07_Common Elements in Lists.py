@@ -16,12 +16,9 @@ list2 = list(map(int, list2_input.split()))
 common_elements = []
 
 # looping through list 1 
-for num in list1:
-    # check if the bumber is in scond list 
-    if num in list2:
-        # check if it slready in common_elemnets  
-        if num not in common_elements:
-            common_elements.append(num)
+for numbers in list1:
+    if numbers in list2 and numbers not in common_elements: # check if the number is in scond list,if it already in common_elemnets  
+            common_elements.append(numbers)
 
 # Print the common elements
 print("Common elements:", common_elements)
