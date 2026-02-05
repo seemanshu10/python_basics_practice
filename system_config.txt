@@ -1,0 +1,3 @@
+RenderEngine=Arnold
+FrameRange=1001-1100
+Resolution=1920x1080

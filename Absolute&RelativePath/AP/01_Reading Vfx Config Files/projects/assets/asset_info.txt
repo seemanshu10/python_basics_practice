@@ -1,0 +1,2 @@
+Asset: Dragon_Rig
+Version: 1.2

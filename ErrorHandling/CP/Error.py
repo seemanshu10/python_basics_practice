@@ -45,13 +45,13 @@ except AttributeError:
 
 # Handling NameErrors
 
-def example_function():
-    try:
-        print(value)
-    except NameError:
-        print("Error: Local variable refrenced before assignment.")
+# def example_function():
+#     try:
+#         print(value)
+#     except NameError:
+#         print("Error: Local variable refrenced before assignment.")
 
-example_function()
+# example_function()
 
 # Error: Local variable refrenced before assignment.
 
