@@ -1,0 +1,3 @@
+Name: Bob
+PIN: 1478
+Balance: 2000.0
