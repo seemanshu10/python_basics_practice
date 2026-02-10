@@ -42,6 +42,7 @@ Invalid board positions
 Non-integer or unexpected input
 
 """
+# checking valid positions on board 
 def get_valid_position(board):
     while True:
         try:
@@ -163,6 +164,7 @@ def TicTacGame():
             if player2 not in scores:
                 scores[player2] = 0
             # print(scores) 
+            
             while True:
                 play_gameState(player1, player2, scores)
                 total_games += 1
