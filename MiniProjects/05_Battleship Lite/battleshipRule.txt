@@ -1,0 +1,35 @@
+==================================================
+        BATTLESHIP LITE - GAME RULES
+==================================================
+
+OBJECTIVE:
+Sink all 3 hidden enemy ships on a 5x5 grid.
+
+GAME BOARD:
+- The board is 5 rows x 5 columns.
+- Coordinates range from (0,0) to (4,4).
+- Rows and columns start at 0.
+
+SHIPS:
+- There are 3 ships.
+- Each ship occupies exactly ONE cell.
+- Ship positions are predefined (not random).
+
+HOW TO PLAY:
+1. Enter a row number (0–4).
+2. Enter a column number (0–4).
+3. The game will tell you if it's a HIT or MISS.
+
+SYMBOLS:
+-  -  → Unguessed position
+-  X  → Hit
+-  O  → Miss
+
+INPUT RULES:
+- Must enter numbers only
+- Must be within 0–4
+- Cannot repeat the same coordinate
+
+WIN CONDITION:
+Hit all 3 ships to win.
+Total guesses will be displayed.
