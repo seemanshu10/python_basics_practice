@@ -1,0 +1,6 @@
+2024-05-01 | ₹250 | food | lunch
+2024-05-01 | ₹600 | travel | cab to airport
+2024-05-02 | ₹1200 | utilities | electricity bill
+2024-02-21 | ₹2345.00 | travel | cab
+2024-04-12 | ₹2454.00 | food | expensive dinner
+2024-12-23 | ₹412.00 | food | dinner awesome!

@@ -1,0 +1,5 @@
+Task: T001 | Status: In Progress | Time: 2h  
+Task: T002 | Status: Completed | Time: 1h  
+Task: T003 | Status: Failed | Time: 3h  
+Task: T004 | Status: In Progress | Time: 4h  
+Task: T005 | Status: Completed | Time: 2.5h
