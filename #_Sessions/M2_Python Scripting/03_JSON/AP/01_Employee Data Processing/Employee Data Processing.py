@@ -29,7 +29,7 @@ try:
         json.dump(department_totals,output_file,indent=4)
         
     print("Department Salary Totals calculated successfully")
-    print(f"Results saved to {employeefile_path_Output} .")
+    print(f"Department salaries have been written to department_salaries.json .")
 
 except FileNotFoundError:
     print(f"Error :'{employeefile_path_Input} doesn't exist'")
