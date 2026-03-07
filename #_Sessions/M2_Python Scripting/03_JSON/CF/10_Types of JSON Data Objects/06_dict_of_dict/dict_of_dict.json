@@ -1,0 +1,4 @@
+{
+    "person1": {"name": "Alice", "age": 25},
+    "person2": {"name": "Bob", "age": 30}
+}

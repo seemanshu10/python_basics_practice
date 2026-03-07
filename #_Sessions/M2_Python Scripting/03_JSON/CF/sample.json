@@ -1,0 +1,28 @@
+{
+    "people": [
+        {
+            "name": "aman",
+            "last_name": "sharma",
+            "location": [
+                "mumbai",
+                "banglore"
+            ]
+        },
+        {
+            "name": "sumit",
+            "last_name": "k",
+            "location": [
+                "mumbai"
+            ]
+        },
+        {
+            "name": "manoj",
+            "last_name": "domble",
+            "location": [
+                "mumbai",
+                "banglore",
+                "hyd"
+            ]
+        }
+    ]
+}

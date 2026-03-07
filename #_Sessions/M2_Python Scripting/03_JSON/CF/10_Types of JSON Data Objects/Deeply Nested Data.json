@@ -1,0 +1,24 @@
+{
+  "company": {
+    "departmentA": {
+      "team1": {
+        "member1": {"name": "Alice", "role": "Developer", "experience": 5},
+        "member2": {"name": "Bob", "role": "Tester", "experience": 3}
+      },
+      "team2": {
+        "member1": {"name": "Charlie", "role": "Manager", "experience": 8},
+        "member2": {"name": "David", "role": "Developer", "experience": 4}
+      }
+    },
+    "departmentB": {
+      "team1": {
+        "member1": {"name": "Eve", "role": "Developer", "experience": 6},
+        "member2": {"name": "Frank", "role": "Designer", "experience": 2}
+      },
+      "team2": {
+        "member1": {"name": "Grace", "role": "Developer", "experience": 5},
+        "member2": {"name": "Hank", "role": "Tester", "experience": 4}
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Alice",
+  "age": 28,
+  "isMarried": false,
+  "children": null,
+  "hobbies": ["painting", "cycling", "hiking"],
+  "education": {
+    "highSchool": "Central High",
+    "university": "State University"
+  },
+  "scores": [85.5, 90.0, 92.3],
+  "address": {
+    "street": "456 Elm St",
+    "city": "Springfield",
+    "state": "IL",
+    "postalCode": "62704"
+  }
+}

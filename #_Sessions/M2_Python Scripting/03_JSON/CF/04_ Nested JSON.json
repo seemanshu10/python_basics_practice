@@ -1,0 +1,22 @@
+{
+  "store": {
+    "book": [
+      {
+        "category": "fiction",
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 10.99
+      },
+      {
+        "category": "non-fiction",
+        "title": "Sapiens",
+        "author": "Yuval Noah Harari",
+        "price": 15.99
+      }
+    ],
+    "bicycle": {
+      "color": "red",
+      "price": 399.99
+    }
+  }
+}
