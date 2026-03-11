@@ -1,0 +1,6 @@
+{
+  "project": "VFX Training",
+  "version": 1,
+  "enabled": true,
+  "tools": ["loader", "exporter", "viewer"]
+}

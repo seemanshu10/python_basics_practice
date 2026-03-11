@@ -1,0 +1,67 @@
+{
+    "city": "Springfield",
+    "date": "2024-12-30",
+    "weather": [
+      {
+        "day": "Monday",
+        "temperature": {
+          "morning": 5,
+          "afternoon": 12,
+          "evening": 8,
+          "night": 3
+        },
+        "condition": "Sunny",
+        "humidity": 45,
+        "wind": {
+          "speed": 10,
+          "direction": "NW"
+        }
+      },
+      {
+        "day": "Tuesday",
+        "temperature": {
+          "morning": 7,
+          "afternoon": 14,
+          "evening": 10,
+          "night": 5
+        },
+        "condition": "Partly Cloudy",
+        "humidity": 50,
+        "wind": {
+          "speed": 12,
+          "direction": "W"
+        }
+      },
+      {
+        "day": "Wednesday",
+        "temperature": {
+          "morning": 6,
+          "afternoon": 10,
+          "evening": 7,
+          "night": 2
+        },
+        "condition": "Rainy",
+        "humidity": 85,
+        "wind": {
+          "speed": 15,
+          "direction": "SE"
+        }
+      },
+      {
+        "day": "Thursday",
+        "temperature": {
+          "morning": 4,
+          "afternoon": 9,
+          "evening": 6,
+          "night": 1
+        },
+        "condition": "Cloudy",
+        "humidity": 60,
+        "wind": {
+          "speed": 8,
+          "direction": "N"
+        }
+      }
+    ]
+  }
+  

@@ -1,9 +1,11 @@
 # Practice JSON Operations
 import json
+import os
 
-personfile_path_Input = r"#_Sessions\M2_Python Scripting\03_JSON\AP\03_Practice Json Operations\person.json"
+EMPLOYEE_PATH = os.path.dirname(os.path.abspath(__file__))
 
-personfile_path_Output = r"#_Sessions\M2_Python Scripting\03_JSON\AP\03_Practice Json Operations\output.json"
+personfile_path_Input = os.path.join(EMPLOYEE_PATH, "person.json")
+personfile_path_Output = os.path.join(EMPLOYEE_PATH, "output.json")
 
 try:
     # Load JSON Data

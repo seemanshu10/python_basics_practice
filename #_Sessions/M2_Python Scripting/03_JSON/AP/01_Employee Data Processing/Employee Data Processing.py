@@ -1,10 +1,12 @@
 # Employee Data Processing
-
+import os 
 import json
 
-employeefile_path_Input = r"#_Sessions\M2_Python Scripting\03_JSON\AP\01_Employee Data Processing\employees.json"
-
-employeefile_path_Output = r"#_Sessions\M2_Python Scripting\03_JSON\AP\01_Employee Data Processing\department_salaries.json"
+EMPLOYEE_PATH = os.path.dirname(os.path.abspath(__file__))
+# weather_json_file_path = os.path.join(EMPLOYEE_PATH, "employees.json") 
+# print(weather_json_file_path)
+employeefile_path_Input = os.path.join(EMPLOYEE_PATH, "employees.json")
+employeefile_path_Output = os.path.join(EMPLOYEE_PATH, "department_salaries.json")
 
 try:
     with open(employeefile_path_Input ,"r") as employee_file:
@@ -17,7 +19,7 @@ try:
         department = employee["department"]
         salary = employee["salary"]
 
-        #print(department,salary)
+        # print(department,salary)
         # if new department add in key otherwise add the salary 
         if department in department_totals:
             department_totals[department] += salary

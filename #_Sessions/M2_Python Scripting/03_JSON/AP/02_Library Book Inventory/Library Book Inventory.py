@@ -1,10 +1,12 @@
 # Library Book Inventory
 
+import os
 import json
 
-authorfile_path_Input = r"#_Sessions\M2_Python Scripting\03_JSON\AP\02_Library Book Inventory\books.json"
+EMPLOYEE_PATH = os.path.dirname(os.path.abspath(__file__))
 
-authorfile_path_Output = r"#_Sessions\M2_Python Scripting\03_JSON\AP\02_Library Book Inventory\author_inventory.json"
+authorfile_path_Input = os.path.join(EMPLOYEE_PATH, "books.json")
+authorfile_path_Output = os.path.join(EMPLOYEE_PATH, "author_inventory.json")
 
 try:
     with open(authorfile_path_Input ,"r") as employee_file:

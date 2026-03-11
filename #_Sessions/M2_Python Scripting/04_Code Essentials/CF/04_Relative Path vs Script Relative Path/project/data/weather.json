@@ -1,0 +1,10 @@
+{
+  "city": "San Francisco",
+  "temperature": 18,
+  "unit": "C",
+  "forecast": [
+    {"day": "Mon", "cond": "Sunny"},
+    {"day": "Tue", "cond": "Cloudy"},
+    {"day": "Wed", "cond": "Rain"}
+  ]
+}
