@@ -1,0 +1,12 @@
+{
+    "environment": "dev",
+    "resolution": "1280x720",
+    "samples": 32,
+    "denoiser": true,
+    "motion_blur": false,
+    "depth_of_field": false,
+    "file_format": "jpg",
+    "color_space": "sRGB",
+    "render_engine": "GPU",
+    "max_render_time_minutes": 10
+}

@@ -1,0 +1,12 @@
+{
+    "environment": "test",
+    "resolution": "1920x1080",
+    "samples": 96,
+    "denoiser": true,
+    "motion_blur": true,
+    "depth_of_field": false,
+    "file_format": "png",
+    "color_space": "ACEScg",
+    "render_engine": "GPU",
+    "max_render_time_minutes": 45
+}
