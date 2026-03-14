@@ -83,18 +83,18 @@ def search_ContactName():
             # ['Name: Alice\nPhone: 1234567890\nEmail: alice@example.com\n', 'Name: David\nPhone: 7820215463\nEmail: david@gmail.com\n', '']
 
             for contact in contactBookContent:
-                # print(contact)
+                
                 if name_toSearch in contact.lower():
                     print("\nContact Found : ")
                     print(contact.strip())
-                    return # exit when contact found 
+                    return                              # exit when contact found 
                 
             print("Contact not found .")
 
         except FileNotFoundError:
             print("Error Reading the file.")
 
-        except KeyboardInterrupt:   # keyboardinterrupt error 
+        except KeyboardInterrupt:                       # keyboardinterrupt error 
             print("Exiting Cleanly!")
 
 
@@ -185,7 +185,7 @@ def contact_menu():
 
 
 # display Choices for banking system 
-def ContactBookSystem():
+def contact_book_system():
     try:
         while True:
             contact_menu()
@@ -208,4 +208,4 @@ def ContactBookSystem():
     except KeyboardInterrupt:   # keyBoardInterrupt error handle
         print("\n\nExiting the contact book system. Exiting Cleanly. Gooodbye!")
 
-ContactBookSystem()
+contact_book_system()

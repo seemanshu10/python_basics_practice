@@ -1,0 +1,8 @@
+{
+    "shot": "shot02",
+    "frame_start": 1001,
+    "frame_end": 1035,
+    "render_time_per_frame": 3,
+    "frame_count": 35,
+    "total_render_time": 105
+}

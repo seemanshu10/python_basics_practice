@@ -212,7 +212,7 @@ def creating_account():
     print("New Account Created successfully")
 
 # display choices
-def Bank_System():
+def bank_system():
     try:
         while True:
             bank_menu()
@@ -235,4 +235,4 @@ def Bank_System():
     except KeyboardInterrupt:
         print("\n\nKeyboard Interrupt detected. Exiting the banking system. Goodbye!")
 
-Bank_System()
+bank_system()

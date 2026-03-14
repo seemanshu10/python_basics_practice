@@ -85,10 +85,10 @@ def run_quiz(questions):
     - Invalid user input
     - Early exit using Ctrl+C
     """
-    #total_Questions = len(questions)
-    correctAnswer_count = 0
-    wrongAnswer_count = 0
-    attemptedQuestions = 0
+    #total_questions = len(questions)
+    correct_answer_count = 0
+    wrong_answer_count = 0
+    attempted_questions = 0
 
     for idx, (question, options, answer) in enumerate(questions, start=1):  # unpacking tuple
         print(f"\nQ{idx}. {question}")
@@ -102,31 +102,31 @@ def run_quiz(questions):
                     break
                 print("Invalid input. Please enter A, B, C, or D.")
 
-            attemptedQuestions += 1
+            attempted_questions += 1
 
             # If answer from file is invalid (None), force it as wrong
             if answer is None:
                 print("Wrong Answer. Question has invalid correct answer.")
-                wrongAnswer_count += 1
+                wrong_answer_count += 1
 
             elif user_choice == answer:
                 print("Correct Answer!")
-                correctAnswer_count += 1
+                correct_answer_count += 1
 
             else:
                 print(f"Wrong Answer. Correct answer is {answer}")
-                wrongAnswer_count += 1
+                wrong_answer_count += 1
 
         except KeyboardInterrupt:
             # Allows clean exit in middle of quiz
             print("\nQuiz interrupted by user.")
             break
 
-    return attemptedQuestions, correctAnswer_count, wrongAnswer_count
+    return attempted_questions, correct_answer_count, wrong_answer_count
 
 
 # genrating reports After quiz 
-def generate_reports(total_Questions, correctAnswer_count, wrongAnswer_count):
+def generate_reports(total_questions, correct_answer_count, wrong_answer_count):
     """
     Generates a report card file after quiz completion.
 
@@ -134,27 +134,27 @@ def generate_reports(total_Questions, correctAnswer_count, wrongAnswer_count):
     - Partial quiz attempts
     - Division by zero safety
     """
-    if total_Questions == 0:
+    if total_questions == 0:
         print("No questions attempted. Report not generated.")
         return
 
-    scorePercentage = (correctAnswer_count / total_Questions) * 100
-    status = "Pass" if scorePercentage >= 50 else "Fail"
+    score_percentage = (correct_answer_count / total_questions) * 100
+    status_pass_or_fail = "Pass" if score_percentage >= 50 else "Fail"
 
     with open(REPORT_PATH, "w") as file:
         file.write("QUIZ REPORT CARD\n")
         file.write("=" * 40 + "\n")
-        file.write(f"Total Questions     : {total_Questions}\n")
-        file.write(f"Attempted Questions : {total_Questions}\n")
-        file.write(f"Correct Answers     : {correctAnswer_count}\n")
-        file.write(f"Wrong Answers       : {wrongAnswer_count}\n")
-        file.write(f"Final Score         : {scorePercentage:.2f}%\n")
-        file.write(f"Result              : {status}\n")
+        file.write(f"Total Questions     : {total_questions}\n")
+        file.write(f"Attempted Questions : {total_questions}\n")
+        file.write(f"Correct Answers     : {correct_answer_count}\n")
+        file.write(f"Wrong Answers       : {wrong_answer_count}\n")
+        file.write(f"Final Score         : {score_percentage:.2f}%\n")
+        file.write(f"Result              : {status_pass_or_fail}\n")
 
     print("Report card generated successfully.")
 
 # Main QuizApp code 
-def QuizzApp():
+def quizz_App():
     """
     Main controller function for the Quiz App.
     """
@@ -174,4 +174,4 @@ def QuizzApp():
         print("\nExiting Cleanly!") 
 
 
-QuizzApp()
+quizz_App()
