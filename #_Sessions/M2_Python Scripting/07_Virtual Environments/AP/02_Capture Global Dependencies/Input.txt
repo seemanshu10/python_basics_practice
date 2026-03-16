@@ -1,0 +1,80 @@
+PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> pip list  
+Package            Version
+------------------ ---------
+certifi            2026.2.25
+charset-normalizer 3.4.5
+colorama           0.4.6
+idna               3.11
+pip                22.3.1
+requests           2.32.5
+setuptools         65.5.0
+urllib3            2.6.3
+
+[notice] A new release of pip available: 22.3.1 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> python -m venv .venv
+
+PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> .venv\Scripts\activate
+(.venv) PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> pip list
+Package    Version
+---------- -------
+pip        22.3.1
+setuptools 65.5.0
+
+[notice] A new release of pip available: 22.3.1 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+(.venv) PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> deactivate
+
+S D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> pip list
+Package            Version
+------------------ ---------
+certifi            2026.2.25
+charset-normalizer 3.4.5
+colorama           0.4.6
+idna               3.11
+pip                22.3.1
+requests           2.32.5
+setuptools         65.5.0
+urllib3            2.6.3
+
+[notice] A new release of pip available: 22.3.1 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> pip freeze > requiremnts.txt
+
+
+PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> .venv\Scripts\activate      
+(.venv) PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> pip install -r requiremnts.txt
+Collecting certifi==2026.2.25
+  Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Collecting charset-normalizer==3.4.5
+  Using cached charset_normalizer-3.4.5-cp310-cp310-win_amd64.whl (142 kB)
+Collecting colorama==0.4.6
+  Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Collecting idna==3.11
+  Using cached idna-3.11-py3-none-any.whl (71 kB)
+Collecting requests==2.32.5
+  Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Collecting urllib3==2.6.3
+  Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Installing collected packages: urllib3, idna, colorama, charset-normalizer, certifi, requests
+Successfully installed certifi-2026.2.25 charset-normalizer-3.4.5 colorama-0.4.6 idna-3.11 requests-2.32.5 urllib3-2.6.3
+
+[notice] A new release of pip available: 22.3.1 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+(.venv) PS D:\PipelineTD\python_basics_practice\#_Sessions\M2_Python Scripting\07_Virtual Environments\AP\02_Capture Global Dependencies> pip list
+Package            Version
+------------------ ---------
+certifi            2026.2.25
+charset-normalizer 3.4.5
+colorama           0.4.6
+idna               3.11
+pip                22.3.1
+requests           2.32.5
+setuptools         65.5.0
+urllib3            2.6.3
+
+[notice] A new release of pip available: 22.3.1 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip

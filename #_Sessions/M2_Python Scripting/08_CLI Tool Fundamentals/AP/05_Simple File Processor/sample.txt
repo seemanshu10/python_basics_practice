@@ -1,0 +1,7 @@
+Hello, this is a simple text file.
+It contains multiple lines,
+some punctuation, and words repeated — like simple, SIMPLE, and Simple.
+Total words should be counted case-insensitively.
+There are empty lines too.
+
+This is the last line.

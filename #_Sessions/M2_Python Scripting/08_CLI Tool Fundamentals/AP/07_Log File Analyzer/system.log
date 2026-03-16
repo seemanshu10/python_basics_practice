@@ -1,0 +1,9 @@
+INFO: System started successfully.
+WARNING: Disk space is running low.
+ERROR: Failed to connect to the database.
+INFO: User logged in.
+ERROR: User authentication failed.
+WARNING: High memory usage detected.
+INFO: Connection timeout after 30 seconds.
+ERROR: Timeout while waiting for server response.
+INFO: Scheduled job completed.

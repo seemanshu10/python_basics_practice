@@ -1,0 +1,5 @@
+Hello, this is a sample text file.
+It contains several lines of text.
+Some lines may incluse the keyword 'Python'.
+Python is a powerful programming language.
+CLI Tools are very useful.
