@@ -47,7 +47,7 @@ def generate_password(length_of_password, use_uppercase, use_numbers, use_specia
     # password_chars = required_chars + [random.choice(char_pool) for _ in range(length_of_password)]
     for i in range(length_of_password):
         random_character = random.choice(char_pool)
-        required_chars = required_chars + random_character
+        required_chars.append(random_character)
 
     return "".join(required_chars)
 
@@ -70,11 +70,11 @@ def main():
         options = []
 
     for opt in options:
-        if opt.lower() == "uppercase":
+        if opt.lower() == "--uppercase":
             use_uppercase = True
-        elif opt.lower() == "numbers":
+        elif opt.lower() == "--numbers":
             use_numbers = True
-        elif opt.lower() == "special":
+        elif opt.lower() == "--special":
             use_special = True
         else:
             print(f"Unknown option: {opt}")
@@ -87,9 +87,12 @@ if __name__ == "__main__":
     main()
 
 """
-password_generator.py 8 numbers special 
-dw/ef3}x
+python .\password_generator_flag.py 12 --numbers --special --uppercase
+3?dhMoV#PxzT
 
-python password_generator.py 12
-vjvgcuddnqht
+python .\password_generator_flag.py  --numbers --special --uppercase      
+Error: First argument must be password length.
+
+ python .\password_generator_flag.py  12                                   
+ppssntqurfdr
 """

@@ -28,10 +28,12 @@ def organize_directory(directory_path):
 
     for file in files:
         file_path = os.path.join(directory_path, file)
-
+        # print(file_path)
+        print(file)
         # Get file extension
         _, extension = os.path.splitext(file)
-
+        print(extension)
+        print(_)
         if not extension:
             print(f"Skipped (no extension): {file}")
             continue

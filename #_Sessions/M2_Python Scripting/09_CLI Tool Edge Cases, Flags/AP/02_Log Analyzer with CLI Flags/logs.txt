@@ -1,0 +1,6 @@
+2024-07-23 09:05:00 INFO: Application started successfully.
+2024-07-23 09:10:00 WARNING: Low memory warning. Available memory is below the threshold.
+2024-07-23 09:15:00 ERROR: FileNotFound: Unable to locate the configuration file.
+2024-07-23 09:20:00 CRITICAL: SystemCrash: The application has encountered a critical error and needs to close.
+2024-07-23 09:25:00 INFO: Memory cleanup process initiated.
+2024-07-23 09:35:00 ERROR: NullReference: Attempted to access an object that is null.
