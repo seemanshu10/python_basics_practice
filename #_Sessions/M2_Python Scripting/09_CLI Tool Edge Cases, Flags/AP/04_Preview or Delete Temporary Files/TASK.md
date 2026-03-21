@@ -123,7 +123,7 @@ Error: Directory not found.
 """
 Updates :
 Preview the subfolder names of the files 
-Extension to be deleted from user 
-total count of diles deleted 
+Extension to be deleted from user input
+total count of files deleted 
 found : <number> ,deleted <number>
 """

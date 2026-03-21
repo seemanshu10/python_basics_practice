@@ -1,0 +1,23 @@
+{
+  "0010": {
+    "status": "rendered",
+    "artist": "John Doe",
+    "frame_range": "1001-1100",
+    "last_update": "2024-12-01",
+    "notes": "Final approved version."
+  },
+  "0020": {
+    "status": "rendering",
+    "artist": "Jane Smith",
+    "frame_range": "1101-1200",
+    "last_update": "2024-12-02",
+    "notes": "In render farm queue."
+  },
+  "0030": {
+    "status": "failed",
+    "artist": "Ali Wong",
+    "frame_range": "1201-1300",
+    "last_update": "2024-12-03",
+    "notes": "Render crashed due to memory issue."
+  }
+}

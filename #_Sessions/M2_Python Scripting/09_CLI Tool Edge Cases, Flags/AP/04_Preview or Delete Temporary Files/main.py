@@ -1,75 +1,103 @@
-import sys
 import os
+import sys
 
-def print_help():
-    help_test = ("""
-    Usage : python main.py <directory_path> <prefix> [--preview | --delete]
-    Options:
-        --preview   Preview the new file names without renaming.
-        --delete    to remove all .tmp files from the directory.
-        --help      Show this help messages and exit.
+def show_help():
+    print("""
+Usage: python script.py <directory_path> [--delete | --preview] [--ext EXTENSION]
 
-    Description: 
-        This script renames all files in a directory by adding a prefix . 
+Options:
+  --delete       Delete all matching files in the specified directory.
+  --preview      List all matching files without deleting them.
+  --ext          Specify file extension to target (default: .tmp)
+  --help         Show this help message and exit.
 
-    Example:
-        python main.py --help
-        python main.py ./temp_project --preview
-        python main.py ./temp_project --delete
-                        
-    """)
-    print(help_test)
-    sys.exit(0)
+Description:
+  This script scans a directory recursively and either previews or deletes
+  files with a specified extension.
 
-def find_temperory_files(directory_path):
-    temp_files = []
-    for root, dirs, files in os.walk(directory_path):
+Examples:
+  python script.py ./test_folder --preview
+  python script.py ./test_folder --delete
+  python script.py ./test_folder --preview --ext .log
+""")
+
+def validate_directory(path):
+    if not os.path.isdir(path):
+        print("Error: Directory not found.")
+        sys.exit(1)
+
+def find_files(directory, extension):
+    matches = []
+    for root, dirs, files in os.walk(directory):
         for file in files:
-            if file.endswith(".tmp"):
-                # Save relative path to directory
-                rel_path = os.path.relpath(os.path.join(root, file), directory_path)
-                temp_files.append(rel_path)
-    return temp_files
+            if file.endswith(extension):
+                full_path = os.path.join(root, file)
+                matches.append(full_path)
+    return matches
 
-def preview_tmp_files(directory_path):
-    tmp_files = find_temperory_files(directory_path)
-    if tmp_files:
-        print("Temporary files:")
-        for file in tmp_files:
-            print(file.split("\\")[1])
-    else:
-        print("No temporary files found.")
+def preview_files(files, base_dir):
+    if not files:
+        print("No matching files found.")
+        return
 
-def delete_tmp_files(directory_path):
-    tmp_files = find_temperory_files(directory_path)
+    print("Temporary files found:")
+    for file in files:
+        rel_path = os.path.relpath(file, base_dir)
+        # folder = os.path.dirname(rel_path)
+        print(f"{rel_path} ")
 
-    if tmp_files:
-        for file in tmp_files:
-            # delete 
-            os.remove(os.path.join(directory_path,file))
-    else:
-        print("No temporary files found to be deleted.")
-    
+    print(f"\nTotal found: {len(files)}")
+
+def delete_files(files):
+    if not files:
+        print("No matching files to delete.")
+        return
+
+    deleted_count = 0
+
+    for file in files:
+        try:
+            os.remove(file)
+            deleted_count += 1
+        except Exception as e:
+            print(f"Failed to delete {file}: {e}")
+
+    print(f"Found: {len(files)}, Deleted: {deleted_count}")
 
 def main():
+    args = sys.argv
 
-    if len(sys.argv) < 2 or "--help" in sys.argv:
-        print_help()
+    if "--help" in args or len(args) < 3:
+        show_help()
         return
-    
-    args = sys.argv[1:] 
-    directory_path = args[0]
 
-    # Check if directory exists
-    if not os.path.isdir(directory_path):
-        print(f"Error: '{directory_path}' does not exist.")
-        
-    if "--preview" in sys.argv:
-        preview_tmp_files(directory_path)
-    elif "--delete" in sys.argv:
-        delete_tmp_files(directory_path)
+    directory = args[1]
+
+    # Default extension
+    extension = ".tmp"
+
+    # Custom extension support
+    if "--ext" in args:
+        try:
+            ext_index = args.index("--ext") + 1
+            extension = args[ext_index]
+            if not extension.startswith("."):
+                extension = "." + extension
+        except IndexError:
+            print("Error: Please provide an extension after --ext")
+            return
+
+    validate_directory(directory)
+
+    files = find_files(directory, extension)
+
+    if "--preview" in args:
+        preview_files(files, directory)
+    elif "--delete" in args:
+        delete_files(files)
     else:
-        print("Error: Invalid flag. Use --help for usage instructions.")
+        print("Error: Please specify either --preview or --delete")
+        show_help()
 
 if __name__ == "__main__":
     main()
