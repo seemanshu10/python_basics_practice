@@ -3,7 +3,7 @@ import sys
 
 def show_help():
     print("""
-Usage: python script.py <directory_path> [--delete | --preview] [--ext EXTENSION]
+Usage: python main.py <directory_path> [--delete | --preview] [--ext EXTENSION]
 
 Options:
   --delete       Delete all matching files in the specified directory.
@@ -16,9 +16,10 @@ Description:
   files with a specified extension.
 
 Examples:
-  python script.py ./test_folder --preview
-  python script.py ./test_folder --delete
-  python script.py ./test_folder --preview --ext .log
+  python .\main.py .\temp_project\ --preview
+  python .\main.py .\temp_project\ --delete
+  python .\main.py .\temp_project\ --preview --ext .tmp
+  python .\main.py .\temp_project\ --preview --ext .log
 """)
 
 def validate_directory(path):
@@ -29,10 +30,15 @@ def validate_directory(path):
 def find_files(directory, extension):
     matches = []
     for root, dirs, files in os.walk(directory):
+        print(f"Root {root}")
+        print(f"dirs {dirs}")
+        print(f"files {files}" )
         for file in files:
             if file.endswith(extension):
                 full_path = os.path.join(root, file)
+                # print(full_path)
                 matches.append(full_path)
+    
     return matches
 
 def preview_files(files, base_dir):
@@ -47,6 +53,7 @@ def preview_files(files, base_dir):
         print(f"{rel_path} ")
 
     print(f"\nTotal found: {len(files)}")
+    
 
 def delete_files(files):
     if not files:
@@ -64,12 +71,12 @@ def delete_files(files):
 
     print(f"Found: {len(files)}, Deleted: {deleted_count}")
 
+
 def main():
     args = sys.argv
 
     if "--help" in args or len(args) < 3:
         show_help()
-        return
 
     directory = args[1]
 
@@ -95,9 +102,7 @@ def main():
         preview_files(files, directory)
     elif "--delete" in args:
         delete_files(files)
-    else:
-        print("Error: Please specify either --preview or --delete")
-        show_help()
+    
 
 if __name__ == "__main__":
     main()
