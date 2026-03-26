@@ -45,3 +45,16 @@ GitHub Web View (after push):
 * Branch: main
 * File: hello_git.py is visible and contains your print statement.
 * Commit message: Add hello_git.py with a welcome message.
+
+
+## Output:
+
+GithubRepoLink: 
+
+[mainBranch](https://github.com/seemanshu10/git-basics-practice)
+
+[feature/branch-practice](https://github.com/seemanshu10/git-basics-practice/tree/feature/branch-practice)
+
+[pull-request-practice](https://github.com/seemanshu10/git-basics-practice/tree/feature/pull-request-practice)
+
+[feature/pull-request-practice](https://github.com/seemanshu10/git-basics-practice/pull/1)

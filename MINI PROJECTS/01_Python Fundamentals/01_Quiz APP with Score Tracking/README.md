@@ -30,7 +30,12 @@ User-driven question loop that reads data from an external file. Displays questi
 ---
 
 ##  Installation
-1. Directly run on terminal (TO do)
+1. Clone the repository:
+   ```
+   git clone https://github.com/seemanshu10/python_basics_practice.git
+   ```
+
+2. Clone the repository on project folder. 
 
 
 ### Folder Structure
@@ -45,8 +50,10 @@ Quiz APP with Score Tracking/
 ```
 
 ## Usage
-1. Place files inside the target folder
-2. Run the Python script directly main.py (TO DO)
+1. Place files inside the folder where the project needs to be stored . 
+2. Can Do git clone on the or download from the github manually through the above github link . 
+3. Open the project folder in the vscode or any other editor .
+4. Run the Python script main.py
 
 ### Generate Score Report
 
@@ -101,7 +108,7 @@ Score             : 50%
 Result            : Pass
 ```
 
-### License:
+###  License:
 ---
 
 > This project is under MIT license 

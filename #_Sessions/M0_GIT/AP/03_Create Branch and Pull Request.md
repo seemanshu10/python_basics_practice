@@ -38,3 +38,15 @@ This file was added for pull request practice.
 * File change listed clearly
 
 **✅ Reminder: ** Submit the Pull Request link only. Do not merge the PR.
+
+## Output:
+
+GithubRepoLink: 
+
+[mainBranch](https://github.com/seemanshu10/git-basics-practice)
+
+[feature/branch-practice](https://github.com/seemanshu10/git-basics-practice/tree/feature/branch-practice)
+
+[pull-request-practice](https://github.com/seemanshu10/git-basics-practice/tree/feature/pull-request-practice)
+
+[feature/pull-request-practice](https://github.com/seemanshu10/git-basics-practice/pull/1)

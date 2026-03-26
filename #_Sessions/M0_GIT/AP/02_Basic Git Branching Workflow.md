@@ -39,3 +39,13 @@ print("This change is on the feature/branch-practice branch.")
 * Branch: feature/branch-practice
 * Commit message is visible
 * Differences with main are shown in the compare view
+
+
+## Output:
+
+GithubRepoLink: 
+
+[mainBranch](https://github.com/seemanshu10/git-basics-practice)
+
+[feature/branch-practice](https://github.com/seemanshu10/git-basics-practice/tree/feature/branch-practice)
+

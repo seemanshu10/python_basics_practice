@@ -28,9 +28,11 @@ Shot Manager Tool is a Python-based pipeline utility designed to  manage of shot
    git clone https://github.com/yourusername/shot-manager-tool.git
    ```
 
+2. Clone the repository on project folder. 
 
 ### Folder Structure
 ---
+
 ```
 ShotManagerTool/
 ├── core/
@@ -42,10 +44,13 @@ ShotManagerTool/
 ```
 
 ## Usage
-1. Place files inside the target folder
-2. Run the Python script main.py
+1. Place files inside the folder where the project needs to be stored . 
+2. Can Do git clone on the or download from the github manually withe git clone command . 
+3. Open the project folder in the vscode or any other editor .
+4. Run the Python script main.py
 
 ### Output:
+---
 ```
 Shot List:
 - shot001 (WIP)    
@@ -56,4 +61,4 @@ Shot List:
 ### License:
 ---
 
-This from is under MIT license 
+> This from is under MIT license 
