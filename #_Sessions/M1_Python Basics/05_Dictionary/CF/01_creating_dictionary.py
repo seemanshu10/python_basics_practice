@@ -15,3 +15,4 @@ print(empty_dict)
 
 # Creating a dictionary using the dict() constructor
 person = dict(name="Alice", age=25, city="London")
+print(person)

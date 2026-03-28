@@ -16,9 +16,9 @@ def main():
             This script renames all files in a directory by adding a prefix . 
 
         Example:
-            python batchFileRename.py --help
-            python batchFileRename.py ./test_folder new_ --preview
-            python batchFileRename.py ./test_folder new_ --rename
+            python  .\shot_log_processor.py --help
+            python  .\shot_log_processor.py .\shot_log_processor.py --preview
+            python  .\shot_log_processor.py .\shot_log_processor.py --rename
                             
         """)
         sys.exit(0)
