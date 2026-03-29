@@ -1,4 +1,4 @@
 import os 
 
-var = "sadasd/seemashu,ver"
+var = "sadasd/seemashu.ver"
 print(os.path.splitext(var))
