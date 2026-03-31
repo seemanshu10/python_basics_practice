@@ -1,0 +1,18 @@
+{ 
+    "plate": {
+        "plate1":{},
+        "plate2":{}
+    }, 
+    "comp": { 
+        "scripts": {}, 
+        "renders": {} 
+    }, 
+    "cache": { 
+        "fx": {}, 
+        "anim": {} 
+    }, 
+    "publish": { 
+        "images": {}, 
+        "videos": {} 
+    } 
+} 
