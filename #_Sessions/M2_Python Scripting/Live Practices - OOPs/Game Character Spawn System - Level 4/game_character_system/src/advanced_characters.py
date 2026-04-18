@@ -136,3 +136,27 @@ class HealerMage(Mage):
         super().show_stats()
         print(f"Heal Amount: {self.heal_amount}")
         print(f"Support Range: {self.support_range}")
+
+if __name__ == "__main__":
+    
+    knight1 = Knight("Arthur", 180, 4, 2, "Rare", 90, 70, 85)
+    firemage1 = FireMage("Blaze", 95, 5, 2, "Epic", 140, 100, 6)
+    sniper1 = Sniper("EagleEye", 110, 8, 2, "Rare", 98, 92, 150)
+
+    knight1.spawn()
+    knight1.show_stats()
+    print()
+
+    firemage1.spawn()
+    firemage1.show_stats()
+    print()
+
+    crossbow1 = CrossbowMaster("Blaze", 95, 5, 2, "Epic", 140, 100, 6)
+    crossbow1.spawn()
+    crossbow1.show_stats()
+    print()
+
+    healer1 = HealerMage("Ariel", 105, 5, 2, "Common", 150, 70, 12)
+    healer1.spawn()
+    healer1.show_stats()
+    print()

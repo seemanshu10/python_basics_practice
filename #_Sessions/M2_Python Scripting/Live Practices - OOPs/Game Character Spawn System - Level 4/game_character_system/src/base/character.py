@@ -24,3 +24,7 @@ class Character:
         print(f"Speed: {self.speed}")
         print(f"Level: {self.level}")
         print(f"Grade: {self.grade}")
+
+if __name__ == "__main__":
+    character1 = Character("Char1", 10, 20, 1, "Legendary")
+    character1.show_stats()

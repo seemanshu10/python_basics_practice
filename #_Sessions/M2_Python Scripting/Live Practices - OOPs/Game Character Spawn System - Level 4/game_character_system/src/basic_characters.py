@@ -1,4 +1,4 @@
-from character import Character
+from base.character import Character
 
 class Warrior(Character):
 
@@ -14,7 +14,6 @@ class Warrior(Character):
         super().show_stats()
         print(f"Weapon: {self.weapon}")
         print(f"Strength: {self.strength}")
-
 
 class Archer(Character):
 
@@ -47,3 +46,17 @@ class Mage(Character):
         super().show_stats()
         print(f"Weapon: {self.weapon}")
         print(f"Mana: {self.mana}")
+
+
+if __name__ == "__main__":
+    warrior1 = Warrior("Thor", 150, 5, 1, "Common", 80)
+    warrior1.show_stats()
+    print()
+
+    archer1 = Archer("Legolas", 100, 7, 1, "Rare", 95)
+    archer1.show_stats()
+    print()
+
+    mage1 = Mage("Merlin", 90, 4, 1, "Epic", 120)
+    mage1.show_stats()
+    print()
