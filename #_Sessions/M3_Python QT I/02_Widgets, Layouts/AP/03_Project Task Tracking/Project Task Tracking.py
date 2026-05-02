@@ -5,20 +5,25 @@ import sys
 from PySide2.QtWidgets import (QApplication, QWidget, QVBoxLayout, QListWidget,
                                QLineEdit, QCheckBox, QPushButton)
 
+from PySide2.QtCore import Slot
 
-# def adding_new_task():
-#     task_name_value = asset_task_name.text()
-#     task_complete_status = asset_task_checkbox.isChecked()
+@Slot
+def adding_new_task():
+    task_name_value = asset_task_name.text()
+    task_complete_status = asset_task_checkbox.isChecked()
 
-#     # print(task_name_value, task_complete_status)
+    # print(task_name_value, task_complete_status)
 
-#     if not task_name_value:
-#         status_message.addItem("Task name cannot be Empty.")
+    if not task_name_value:
+        status_message.addItem("Task name cannot be Empty.")
     
-#     elif task_complete_status:
-#         status_message.addItem(f"{task_name_value} - Completed")
-#     else:
-#         status_message.addItem(f"{task_name_value} - Not Completed")
+    elif task_complete_status:
+        status_message.addItem(f"{task_name_value} - Completed")
+        asset_task_name.setText("")
+        asset_task_checkbox.setChecked(False)
+    else:
+        status_message.addItem(f"{task_name_value} - Not Completed")
+        asset_task_name.setText("")
         
 # create application object  
 app = QApplication(sys.argv)
@@ -46,7 +51,7 @@ layout.addWidget(status_message)
 window.setLayout(layout)
 
 # connect button
-# aseet_task_button.clicked.connect(adding_new_task)
+aseet_task_button.clicked.connect(adding_new_task)
 
 # display window
 window.show()
