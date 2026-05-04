@@ -10,6 +10,7 @@ from PySide2.QtCore import Qt, Slot
 @Slot()
 def button_clicked():
     print("Button Clicked!")
+    
 @Slot()
 def option_select():
     selected_options = ""
