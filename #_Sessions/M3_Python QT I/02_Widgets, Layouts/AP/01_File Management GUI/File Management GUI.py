@@ -1,5 +1,5 @@
 # Building a GUI for File Management
-# TODO: When I run it in virtual environment it is error 
+
 import sys
 
 from PySide2.QtWidgets import (QApplication, QWidget, QVBoxLayout, 

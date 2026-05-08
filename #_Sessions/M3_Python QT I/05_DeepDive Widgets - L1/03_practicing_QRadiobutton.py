@@ -23,6 +23,7 @@ class Main(QWidget):
         """)
 
         self.mp4_rad_btn = QRadioButton("MP4")
+        self.mp4_rad_btn.setChecked(True)
 
         self.mp4_rad_btn.setStyleSheet("""
         QRadioButton {
@@ -45,6 +46,7 @@ class Main(QWidget):
             font-size: 12px     
         }
         """)
+        # TODO : Bug it calls two times when toggled and clicked 
 
         self.export_btn = QPushButton("Export")
         
@@ -73,24 +75,35 @@ class Main(QWidget):
         self.setLayout(main_layout) 
 
         # connection 
+        # instead of calling toggled will send two signals insted use clicked so once it is clicked it sends clicked 
+        self.mp4_rad_btn.clicked.connect(self.on_toggled)
+        self.exr_rad_btn.clicked.connect(self.on_toggled)
+        self.png_rad_btn.clicked.connect(self.on_toggled)
         self.export_btn.clicked.connect(self.on_clicked)
-        # self.launch_render_btn.pressed.connect(self.on_pressed)
-        # self.launch_render_btn.released.connect(self.on_released)
 
 
     def on_clicked(self):
-        # task_name = self.task_label.text()
-        selected_format = ""
+
+        if not self.selected_format:
+            print("Select a Format")
+
+        text_label_print = "Exporting As:" + self.selected_format
+        print(text_label_print)
+
+    def on_toggled(self):
         
         if self.mp4_rad_btn.isChecked():
-            selected_format = "MP4"
+            self.selected_format = "MP4"
         elif self.exr_rad_btn.isChecked():
-            selected_format = "EXR"
+            self.selected_format =  "EXR"
         elif self.png_rad_btn.isChecked():
-            selected_format = "PNG"
+            self.selected_format =  "PNG"
+        else:
+            self.selected_format = None
 
-        text_label_final = "Selected format :" + selected_format
-        self.task_label.setText(text_label_final)
+        self.task_label.setText(f"Toggled Format: {self.selected_format}")
+
+        print(f"Toggled: {self.selected_format}" )
 
         
 if __name__ == "__main__":
@@ -102,7 +115,7 @@ if __name__ == "__main__":
 
     window.setStyleSheet("""
     Main {
-            background-color:#113784;
+            background-color: #113784;
             border-radius: 5px;
             padding: 8px 16px;
         }  
