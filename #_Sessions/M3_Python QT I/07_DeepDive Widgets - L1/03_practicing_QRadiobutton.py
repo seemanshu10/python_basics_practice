@@ -19,12 +19,10 @@ class Main(QWidget):
             color: white;
             font-size: 18px     
         }
-        
         """)
 
         self.mp4_rad_btn = QRadioButton("MP4")
         self.mp4_rad_btn.setChecked(True)
-
         self.mp4_rad_btn.setStyleSheet("""
         QRadioButton {
             color: white;
@@ -46,7 +44,6 @@ class Main(QWidget):
             font-size: 12px     
         }
         """)
-        # TODO : Bug it calls two times when toggled and clicked 
 
         self.export_btn = QPushButton("Export")
         
@@ -80,7 +77,6 @@ class Main(QWidget):
         self.exr_rad_btn.clicked.connect(self.on_toggled)
         self.png_rad_btn.clicked.connect(self.on_toggled)
         self.export_btn.clicked.connect(self.on_clicked)
-
 
     def on_clicked(self):
 
