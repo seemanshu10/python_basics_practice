@@ -2,6 +2,7 @@ import sys
 
 from PySide2.QtWidgets import (QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QTextEdit, QPushButton, QRadioButton, QCheckBox, QComboBox, QGroupBox, QSlider, QProgressBar, QScrollBar, QListWidget, QTabWidget)
 
+import qdarkstyle, qtawesome
 from PySide2.QtCore import Qt
 
 class Main(QWidget):
@@ -9,6 +10,7 @@ class Main(QWidget):
         super().__init__()
         self.setWindowTitle("Core Widgets Practice Tool")
         
+        self.apply_dark_theme()
         # tab Widgets creation 
         tabs = QTabWidget(self)
         general_info_tab = QWidget()
@@ -107,7 +109,9 @@ class Main(QWidget):
         # buttons Layout 
         button_layout = QHBoxLayout()
         submit_btn = QPushButton("Submit")
+        submit_btn.setIcon(qtawesome.icon('ri.download-line', color = 'black'))
         reset_btn = QPushButton("Reset")
+        reset_btn.setIcon(qtawesome.icon('mdi.lock-reset', color = 'black'))
 
         submit_btn.setStyleSheet("""
         QPushButton {
@@ -151,11 +155,13 @@ class Main(QWidget):
         # # Project name label 
         # project_label = QLabel("Project Name")
         # project_name = QLineEdit()
-
+    def apply_dark_theme(self):
+        dark_style_sheet = qdarkstyle.load_stylesheet_pyside2()
+        self.setStyleSheet(dark_style_sheet)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
+    app.setStyle("Fusion")
     window = Main()
     window.resize(300, 520)
     
