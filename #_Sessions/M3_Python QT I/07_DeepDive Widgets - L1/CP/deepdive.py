@@ -1,5 +1,5 @@
 import sys
-from PySide2.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QLabel, QVBoxLayout, QHBoxLayout, QTextEdit, QCheckBox, QComboBox, QGroupBox, QSlider, QListWidget
+from PySide2.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QLabel, QVBoxLayout, QHBoxLayout, QTextEdit, QCheckBox, QComboBox, QGroupBox, QSlider, QListWidget, QProgressBar
 
 from PySide2.QtCore import Qt
 import qdarkstyle, qtawesome
@@ -100,6 +100,26 @@ class MainWindow(QWidget):
         self.run_button.setText("Launch Render")
         self.run_button.setToolTip("Click to start rendering")
 
+        progress = QProgressBar()
+        button = QPushButton("Start")
+        button.clicked.connect(lambda: progress.setValue(100))
+        progress.setStyleSheet("""
+            QProgressBar {
+                border: 1px solid #2c3e50;
+                border-radius: 5px;
+                background-color: #2f3640;
+                text-align: center;
+                color: #ffffff;
+            }
+            QProgressBar::chunk {
+                background-color: #00a8ff;
+                width: 20px;
+            }
+        """)
+
+        # connections 
+        self.run_button.clicked.connect(self.on_button_clicked)
+
         # layout setup 
         self.main_layout.addWidget(self.label)
         self.main_layout.addWidget(self.line_edit)
@@ -110,6 +130,8 @@ class MainWindow(QWidget):
         self.main_layout.addLayout(self.slider_layout)
         self.main_layout.addWidget(self.list_widget)
         self.main_layout.addWidget(self.run_button)
+        self.main_layout.addWidget(progress)
+        self.main_layout.addWidget(button)
         
         self.setLayout(self.main_layout)
 
@@ -127,9 +149,6 @@ class MainWindow(QWidget):
                 background-color: #1c5980;
             }
         """)
-
-        # connections 
-        self.run_button.clicked.connect(self.on_button_clicked)
 
     def apply_dark_theme(self):
         dark_style_sheet = qdarkstyle.load_stylesheet_pyside2()
