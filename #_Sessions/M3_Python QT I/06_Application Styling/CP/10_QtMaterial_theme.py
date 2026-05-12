@@ -26,7 +26,7 @@ class MaterialDesignApp(QWidget):
         self.setLayout(self.main_layout)
 
     def apply_material_theme(self):
-        apply_stylesheet(app, theme='dark_cyan.xml')
+        apply_stylesheet(app, theme='dark_yellow.xml')
 
     def on_button_click(self):
 

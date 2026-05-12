@@ -88,6 +88,8 @@ class Main(QWidget):
         self.progress_bar.setTextVisible(True)      
 
     def reset_progress(self):
+
+        # resting the set range as in in busy _progress we have changed the setRange(0, 0)
         self.progress_bar.setRange(0,100)
         self.progress_bar.setValue(0)
         self.progress_bar.setTextVisible(True)              

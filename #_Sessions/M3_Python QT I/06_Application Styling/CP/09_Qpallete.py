@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     palette = QPalette()
 
-    palette.setColor(QPalette.Window, QColor("#282c34"))
+    palette.setColor(QPalette.Window, QColor("#435f99"))
     palette.setColor(QPalette.WindowText, QColor("#ffffff"))
     palette.setColor(QPalette.Button, QColor("#61afef"))
     palette.setColor(QPalette.ButtonText, QColor("#282c34"))

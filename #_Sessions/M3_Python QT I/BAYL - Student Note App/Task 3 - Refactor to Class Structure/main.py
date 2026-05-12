@@ -77,7 +77,7 @@ class MainWindow(QWidget):
     @Slot()
     def notes_inputs(self):
 
-        note = self.notes_textbox.toPlainText()
+        note = self.notes_textbox.toPlainText() 
         if note:
             self.save_button.setEnabled(True)
         else:

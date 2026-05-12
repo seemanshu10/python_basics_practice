@@ -60,7 +60,6 @@ class Main(QWidget):
             border: 2px solid #ffffff;
         }                                      
         """)
-
         self.print_html_button = QPushButton("Print HTML Text")
         self.clear_button = QPushButton("Clear Text")
         self.toggled_read_button = QPushButton("Toggled Read Only")
@@ -69,6 +68,7 @@ class Main(QWidget):
         self.text_edit.textChanged.connect(self.on_text_changed)
         
         self.print_plain_button.clicked.connect(self.submit_text)
+        self.print_html_button.clicked.connect(self.submit_tohtml)
         self.clear_button.clicked.connect(self.clear_text)
         self.toggled_read_button.clicked.connect(self.on_toggled_read_button)
 
@@ -106,6 +106,11 @@ class Main(QWidget):
     # Button actions - slots 
     def submit_text(self):
         current_text = self.text_edit.toPlainText()
+        self.status_label.setText(f"Submitted: {current_text}")
+        print(f"Submitted: {current_text}")
+
+    def submit_tohtml(self):
+        current_text = self.text_edit.toHtml()
         self.status_label.setText(f"Submitted: {current_text}")
         print(f"Submitted: {current_text}")
 
