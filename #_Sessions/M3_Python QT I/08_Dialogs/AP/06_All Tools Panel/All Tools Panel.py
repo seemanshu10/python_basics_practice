@@ -13,6 +13,12 @@ class DialogTool(QWidget):
         self.setWindowTitle("QWidget-based panel")
         self.resize(200, 200)
 
+        # Initialize variables
+        self.file_path = None
+        self.name = None
+        self.color = None
+        self.font = None
+
         # Label to show selected name and styling
         self.display_label = QLabel("Your output will appear here.")
         self.display_label.setWordWrap(True)
@@ -49,22 +55,42 @@ class DialogTool(QWidget):
     def show_confirmation(self):
         response = QMessageBox.question(self, "Confirm Settings", "Are you sure you want to apply the settings")
         if response == QMessageBox.Yes:
-            
-            summary = f"""\n✅ Settings Applied:\nPreview Folder:{self.file_path}\nNote: {self.name}\nColor: {self.color.name()}\n Font """
+            # File check path
+            file_text = self.file_path if self.file_path else "No file selected"
+
+            # Note if entered 
+            note_text = self.name if self.name else "No note entered"
+
+            # Color is selected 
+            if self.color and self.color.isValid():
+                color_text = self.color.name()
+            else:
+                color_text = "No color selected"
+
+            # Font
+            if self.font:
+                font_text = f"{self.font.family()} ({self.font.pointSize()}pt)"
+            else:
+                font_text = "No font selected"
+
+            summary = f"""\n✅ Settings Applied:\nPreview Folder:{file_text}\nNote: {note_text}\nColor: {color_text}\nFont: {font_text} """
             self.display_label.setText(summary)
+
         else:
             self.display_label.setText("User canceled deletion.")
 
     def pick_color(self):
         self.color = QColorDialog.getColor()
         if self.color.isValid():
-            # self.display_label.setStyleSheet(f"color: {color.name()}")
+            self.display_label.setStyleSheet(f"color: {self.color.name()}")
             self.display_label.setText(f"Selected color: {self.color.name()}")
 
     def pick_font(self):
-        self.font, ok = QFontDialog.getFont()
+        ok, self.font = QFontDialog.getFont()
+        # print(self.font)
+        # print(ok)
         if ok:
-            self.display_label.setFont(self.font)
+            # self.display_label.setFont(self.font)
             self.display_label.setText(f"Selected font: {self.font.family()} ({self.font.pointSize()}pt)")
 
     def get_user_input(self):
@@ -72,7 +98,7 @@ class DialogTool(QWidget):
         if ok:
             self.display_label.setText(f"Hello, {self.name}!")
             print(self.name)
-# TODO: Handle Edge case when some inputs are missing 
+
 # Run the tool
 if __name__ == "__main__":
     app = QApplication(sys.argv)
