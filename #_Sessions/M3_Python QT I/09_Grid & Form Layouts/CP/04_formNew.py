@@ -1,30 +1,47 @@
-from PySide2.QtWidgets import QApplication, QWidget, QFormLayout, QLineEdit, QLabel, QGridLayout, QVBoxLayout
+from PySide2.QtWidgets import (
+    QApplication,
+    QWidget,
+    QLabel,
+    QLineEdit,
+    QGridLayout,
+    QVBoxLayout,
+    QFrame,
+)
+import sys
 
-from PySide2.QtCore import Qt
 
-class MyWindow(QWidget):
+class ContactForm(QWidget):
     def __init__(self):
         super().__init__()
 
+        self.setWindowTitle("Contact Form")
+        self.resize(650, 250)
+
         main_layout = QVBoxLayout(self)
-        # Initialize the form layout
-        form_layout = QFormLayout()
 
-        # Create widgets 
-        self.username_label = QLabel("WWW:")
-        self.username_input = QLineEdit()
+        # Top section
+        top_layout = QGridLayout()
 
-        self.email_label = QLabel("Email:")
-        self.email_input = QLineEdit()
+        lbl_www = QLabel("WWW")
+        self.edit_www = QLineEdit()
 
-        # Add widgets 
-        form_layout.addRow(self.username_label, self.username_input)
-        form_layout.addRow(self.email_label, self.email_input)
+        lbl_email = QLabel("E-mail")
+        self.edit_email = QLineEdit()
 
-        self.username_label.setAlignment(Qt.AlignBottom)
-        self.email_label.setAlignment(Qt.AlignBottom)
+        top_layout.addWidget(lbl_www, 0, 0)
+        top_layout.addWidget(self.edit_www, 0, 1)
 
-        # add Details 
+        top_layout.addWidget(lbl_email, 1, 0)
+        top_layout.addWidget(self.edit_email, 1, 1)
+
+        main_layout.addLayout(top_layout)
+
+        # Details label
+        details_label = QLabel("Details")
+        details_label.setStyleSheet("font-weight: bold;")
+        main_layout.addWidget(details_label)
+
+        # Details form
         details_layout = QGridLayout()
 
         lbl_street = QLabel("Street")
@@ -52,25 +69,21 @@ class MyWindow(QWidget):
         details_layout.addWidget(self.edit_postcode, 1, 1)
 
         details_layout.addWidget(lbl_city, 1, 2)
-        details_layout.addWidget(self.edit_city, 1, 3)
+        details_layout.addWidget(self.edit_city,1, 3)
 
         details_layout.addWidget(lbl_country, 2, 0)
-        details_layout.addWidget(self.edit_country, 2, 1, 1, 3)
+        details_layout.addWidget(self.edit_country, 2, 1,1, 3)
 
         details_layout.setHorizontalSpacing(20)
         details_layout.setVerticalSpacing(15)
 
         main_layout.addLayout(details_layout)
 
-        # form_layout.addRow()
-        # Set the form layout to the window
-        self.setLayout(form_layout)
 
 if __name__ == "__main__":
-    app = QApplication()
+    app = QApplication(sys.argv)
 
-    window = MyWindow()
-    window.resize(500, 200)
+    window = ContactForm()
     window.show()
 
-    app.exec_()
+    sys.exit(app.exec_())

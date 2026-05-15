@@ -6,7 +6,6 @@ class GridWindow(QWidget):
         super().__init__()
 
         self.main_layout = QGridLayout()
-        # create buttons 
         self.createwidgets()
 
         self.setLayout(self.main_layout)
