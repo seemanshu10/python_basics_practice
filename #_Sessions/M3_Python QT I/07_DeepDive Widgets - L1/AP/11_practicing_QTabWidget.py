@@ -96,7 +96,7 @@ class Main(QWidget):
         layout.addWidget(motion_blur)
 
         render_tab.setLayout(layout)
-
+ 
         self.tabs.addTab(render_tab, "Render Settings")
 
     # FX Tab
