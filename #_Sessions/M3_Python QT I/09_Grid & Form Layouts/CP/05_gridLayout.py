@@ -1,5 +1,5 @@
-from PySide2.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton
-
+from PySide2.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QSizePolicy
+from PySide2.QtCore import Qt
 class GridWindow(QWidget):
 
     def __init__(self):
@@ -31,6 +31,8 @@ class GridWindow(QWidget):
         self.main_layout.addWidget(button6, 2, 0)
         self.main_layout.addWidget(button7, 2, 1, 2, 2)
         self.main_layout.addWidget(button8, 3,0)
+
+        button7.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         # self.main_layout.setRowStretch(2, 2)
 

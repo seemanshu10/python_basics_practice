@@ -20,7 +20,6 @@ class GridWindow(QWidget):
                 if text:  # skip empty cell
                     layout.addWidget(QPushButton(text), row, col)
 
-
 if __name__ == "__main__":
     app = QApplication([])
 
