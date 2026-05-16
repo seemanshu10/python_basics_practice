@@ -17,7 +17,6 @@ class MainWindow(QWidget):
 
         # Student Layout 
         self.student_layout = QHBoxLayout()
-
         self.form_layout = QFormLayout()
 
         self.student_label = QLabel("Student Name:")
@@ -42,25 +41,23 @@ class MainWindow(QWidget):
         self.notes_textbox.setPlaceholderText("Write notes here....")
 
         # Buttons layout 
-        self.button_layout = QHBoxLayout()
+        self.button_layout = QGridLayout()
         self.save_button = QPushButton("Save Note")
         self.save_button.setEnabled(False)
         self.clear_button = QPushButton("Clear")
 
-        self.button_layout.addWidget(self.save_button)
-        self.button_layout.addWidget(self.clear_button)
-
-        # dialogbox button layout 
-        self.dialog_button_layout = QHBoxLayout()
         self.color_button = QPushButton("Choose Color")
         self.font_button = QPushButton("Choose Font")
         self.title_button = QPushButton("Set Title")
         self.export_button = QPushButton("Export Note")
 
-        self.dialog_button_layout.addWidget(self.color_button)
-        self.dialog_button_layout.addWidget(self.font_button)
-        self.dialog_button_layout.addWidget(self.title_button)
-        self.dialog_button_layout.addWidget(self.export_button)
+        self.button_layout.addWidget(self.save_button, 0, 0)
+        self.button_layout.addWidget(self.clear_button, 0, 1)
+
+        self.button_layout.addWidget(self.color_button, 1, 0)
+        self.button_layout.addWidget(self.font_button, 1, 1)
+        self.button_layout.addWidget(self.title_button, 2, 0)
+        self.button_layout.addWidget(self.export_button, 2, 1)
 
         # Status layout 
         self.status_label = QLabel("Status: Waiting For Input")
@@ -71,7 +68,6 @@ class MainWindow(QWidget):
         self.main_layout.addWidget(self.notes_label)
         self.main_layout.addWidget(self.notes_textbox)
         self.main_layout.addLayout(self.button_layout)
-        self.main_layout.addLayout(self.dialog_button_layout)
         self.main_layout.addWidget(self.status_label)
 
         # applying StyleSheet
@@ -80,12 +76,13 @@ class MainWindow(QWidget):
 
         # signals connection
         self.all_signals_connector()
-        
 
     # all connections 
     def all_signals_connector(self):
         # connection 
         self.student_name_line.textChanged.connect(self.names_inputs)
+        self.subject_name_line.textChanged.connect(self.subject_inputs)
+        self.category_name_line.textChanged.connect(self.category_inputs)
         self.notes_textbox.textChanged.connect(self.notes_inputs)
         self.save_button.clicked.connect(self.confirm_save)
         self.clear_button.clicked.connect(self.confirm_clear_ui)
@@ -254,12 +251,25 @@ class MainWindow(QWidget):
             self.export_notes()
 
     def export_notes(self):
+        name_student = self.student_label.text()
+        name_student_name = self.student_name_line.text()
+        subject_student = self.subject_label.text()
+        subject_student_name = self.subject_name_line.text()
+        category_student = self.category_label.text()
+        category_student_name = self.category_name_line.text()
 
         notes_data = self.notes_textbox.toPlainText()
-        print(notes_data)
+        # print(name_student, name_student_name, notes_data)
+
+        export_data = (
+        f"{name_student} {name_student_name}\n"
+        f"{subject_student} {subject_student_name}\n"
+        f"{category_student} {category_student_name}\n\n"
+        f"Notes:\n{notes_data}\n"
+        )
 
         with open(self.save_file_path, "w") as export_note:
-            export_note.write(notes_data)
+            export_note.write(export_data)
 
     def confirm_clear_ui(self):
         response = QMessageBox.question(
@@ -302,6 +312,32 @@ class MainWindow(QWidget):
         
         if name:
             self.status_label.setText(f"Status: Typing name - {name}")
+        else:
+            self.status_label.setText("Status: Waiting for input")
+
+    @Slot()
+    def subject_inputs(self):
+        name = self.subject_name_line.text().strip()
+        if name:
+            self.save_button.setEnabled(True)
+        else:
+            self.save_button.setEnabled(False)
+        
+        if name:
+            self.status_label.setText(f"Status: Typing subject - {name}")
+        else:
+            self.status_label.setText("Status: Waiting for input")
+
+    @Slot()
+    def category_inputs(self):
+        name = self.category_name_line.text().strip()
+        if name:
+            self.save_button.setEnabled(True)
+        else:
+            self.save_button.setEnabled(False)
+        
+        if name:
+            self.status_label.setText(f"Status: Typing Category - {name}")
         else:
             self.status_label.setText("Status: Waiting for input")
 
