@@ -1,10 +1,9 @@
 from PySide2.QtWidgets import (
     QApplication, QMainWindow, QLabel, QDockWidget, QToolBar, QAction, QWidget, QSplitter, QSpinBox,
-    QStatusBar, QVBoxLayout, QHBoxLayout, QPushButton, QGridLayout, QFormLayout, 
-    QListWidget, QTextEdit, QScrollArea, QDoubleSpinBox, QTreeView
+    QStatusBar, QVBoxLayout, QPushButton, QFormLayout, QScrollArea, QDoubleSpinBox, QTreeView, QListView, QTableView, QFileDialog, QColorDialog, QFontDialog
 )
-from PySide2.QtCore import Qt
-from PySide2.QtGui import QStandardItemModel, QStandardItem
+from PySide2.QtCore import Qt, QStringListModel
+from PySide2.QtGui import QStandardItemModel, QStandardItem, QPixmap
 import sys
 
 class MainWindow(QMainWindow):
@@ -20,7 +19,7 @@ class MainWindow(QMainWindow):
         self.toolbar()              # toolbar
         self.central_widget()       # central widget
 
-        self.status_bar()           # status bar
+        self.status_bar()           # status bar   
 
     def menubar(self):
         self.menu_bar = self.menuBar()
@@ -34,6 +33,9 @@ class MainWindow(QMainWindow):
         self.open_btn.setShortcut("Ctrl+O")
         self.save_btn.setShortcut("Ctrl+S")
 
+        # connections 
+        self.exit_option.triggered.connect(self.close)
+
     def toolbar(self):
 
         self.main_toolbar = QToolBar()
@@ -42,7 +44,9 @@ class MainWindow(QMainWindow):
         self.add_exit = QAction("Exit", self)
         self.main_toolbar.addAction(self.add_exit)
 
-    
+        # connections 
+        self.add_exit.triggered.connect(self.close)
+
     def central_widget(self):
         self.splitter_central = QSplitter(Qt.Horizontal)
 
@@ -63,6 +67,8 @@ class MainWindow(QMainWindow):
         self.dock_layout = QVBoxLayout()
 
         self.asset_tree()
+        self.asset_list()
+        self.asset_table()
 
         self.dock_widget.setLayout(self.dock_layout)
         self.dock.setWidget(self.dock_widget)
@@ -76,10 +82,49 @@ class MainWindow(QMainWindow):
         self.tree_view = QTreeView()
         self.tree_model = QStandardItemModel()
         self.tree_model.setHorizontalHeaderLabels(["Asset Hierarchy"])
+        
+        self.characters_item = QStandardItem("Character")
+        self.characters_item.appendRow(QStandardItem("Assets"))
+        self.characters_item.appendRow(QStandardItem("Scripts"))
 
+        self.environment_item = QStandardItem("Environment")
+        self.environment_item.appendRows([QStandardItem("Forest"), QStandardItem("City")])
+
+        self.tree_model.appendRow(self.characters_item)
+        self.tree_model.appendRow(self.environment_item)
         self.tree_view.setModel(self.tree_model)
 
-        self.dock_layout.addWidget(self.tree_model)
+        self.dock_layout.addWidget(self.tree_view)
+
+    def asset_list(self):
+
+        self.list_view = QListView()
+        self.list_asset_item = QStringListModel(["Characters", "Props", "Environments"])
+    
+        self.list_view.setModel(self.list_asset_item)
+        self.dock_layout.addWidget(self.list_view)
+
+    def asset_table(self):
+        self.table_view = QTableView()
+
+        self.table_model = QStandardItemModel(3, 3)
+        self.table_model.setHorizontalHeaderLabels(["Name", "Version", "Status"])
+        self.table_view.setModel(self.table_model)
+
+        mock_data = [
+            ["Hero", "v001", "Approved"],
+            ["City", "v003", "Pending"],
+            ["ExplosionFX", "v002", "In Progress"],
+            ["FireFX", "v006", "Approved"],
+            ["Pipe Wet", "v005", "Pending"]
+        ]
+
+        for row, data in enumerate(mock_data):
+            for column, value in enumerate(data):
+                item = QStandardItem(value)
+                self.table_model.setItem(row, column, item)
+
+        self.dock_layout.addWidget(self.table_view)
 
     # Right Widget
     def scroll_area_ui(self):
@@ -104,8 +149,8 @@ class MainWindow(QMainWindow):
         self.right_widget.setLayout(self.form_layout)
         scroll_area.setWidget(self.right_widget)
 
-
         self.button_create()
+        self.form_layout.setSpacing(20) # set spacing for buttons 
         self.image_label_create()
 
         return scroll_area
@@ -121,13 +166,62 @@ class MainWindow(QMainWindow):
         self.form_layout.addRow(self.choose_color_btn)
         self.form_layout.addRow(self.choose_font_btn)
 
+        # button connection 
+        self.load_image_btn.clicked.connect(self.load_image)        # load image function
+        self.choose_color_btn.clicked.connect(self.select_color)  
+        self.choose_font_btn.clicked.connect(self.select_font)  
+
+    def load_image(self):
+        file_name, _ = QFileDialog.getOpenFileName(
+            self,
+            "Open Image",
+            "",
+            "Images (*.png *.jpg *.jpeg *.bmp)"
+        )
+
+        if file_name: 
+            pixmap = QPixmap(file_name)
+
+            if not pixmap.isNull():
+                scaled_pixmap = pixmap.scaled(
+                    self.image_label.width(),
+                    self.image_label.height(),
+                )
+                self.image_label.setPixmap(scaled_pixmap)
+                print(f"Loaded File: {file_name}")
+                self.statusbar.showMessage(f"Loaded File: {file_name}")
+
+    def select_color(self):
+        color = QColorDialog.getColor()
+        if color.isValid():
+            self.image_label.setStyleSheet(f"color: {color.name()}")
+
+            print(f"Selected color: {color.name()}")
+            # self.statusbar.showMessage(f"Border Color: {color.name()}")
+
+            self.image_label.setStyleSheet(f"""
+            border: 5px solid {color.name()};
+            background-color: #222;
+            color: white;
+            """)
+            print(f"Selected font: {color.name()}")
+            self.statusBar().showMessage(f"Color Applied {color.name()}")
+
+    def select_font(self):
+        ok, font = QFontDialog.getFont()
+        if ok:
+            self.image_label.setFont(font)
+
+            print(f"Selected font: {font.toString()}")
+            self.statusBar().showMessage("Font Applied")
+
     def image_label_create(self):
 
         self.image_label = QLabel("No Image Loaded")
         self.image_label.setAlignment(Qt.AlignCenter)
         self.image_label.setFixedSize(500, 400)
         self.image_label.setStyleSheet("""
-            border: 2px solid gray;
+            border: 5px solid green;
             background-color: #222;
             color: white;
         """)

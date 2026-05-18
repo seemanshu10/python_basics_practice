@@ -36,8 +36,6 @@ class GridWindow(QWidget):
 
         # self.main_layout.setRowStretch(2, 2)
 
-# TODO: create as capture
-
 if __name__ == "__main__":
 
     app = QApplication()
