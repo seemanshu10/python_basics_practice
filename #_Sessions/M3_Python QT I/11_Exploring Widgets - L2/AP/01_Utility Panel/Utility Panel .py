@@ -205,6 +205,8 @@ class MainWindow(QMainWindow):
             color: white;
             """)
             print(f"Selected font: {color.name()}")
+
+
             self.statusBar().showMessage(f"Color Applied {color.name()}")
 
     def select_font(self):
