@@ -2,7 +2,7 @@ from PySide2.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout,QPushButton, QLabel, QAction, QToolBar, QDockWidget, QLineEdit
 )
 
-from PySide2.QtCore import Qt
+from PySide2.QtCore import Qt, Slot
 import sys
 class MainWindow(QMainWindow):
 
@@ -78,20 +78,23 @@ class MainWindow(QMainWindow):
         self.addDockWidget(Qt.LeftDockWidgetArea, self.dock)
 
         # connections Slots 
-        self.open_action.triggered.connect(self.open_file)
+        self.open_action.triggered.connect(self.open_file_action)
         self.copy_action.triggered.connect(self.copy_test_action)
         self.exit_action.triggered.connect(self.close)
-        self.toggle_dock_action.triggered.connect(self.toggle_tools_panel)
+        self.toggle_dock_action.triggered.connect(self.toggle_docks_panel)
 
-    def open_file(self):
+    @Slot()
+    def open_file_action(self):
         print("Open Selected")
         self.statusBar().showMessage("Opening File....")
-
+    
+    @Slot()
     def copy_test_action(self):
         self.statusBar().showMessage("Copied to clipboard")
         print("Copy Selected")
 
-    def toggle_tools_panel(self):
+    @Slot()
+    def toggle_docks_panel(self):
         is_visible = self.dock.isVisible()
         self.dock.setVisible(not is_visible)
 

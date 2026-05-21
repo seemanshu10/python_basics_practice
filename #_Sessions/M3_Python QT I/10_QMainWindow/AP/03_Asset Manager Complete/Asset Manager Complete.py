@@ -4,7 +4,7 @@ from PySide2.QtWidgets import (
     QListWidget
 )
 
-from PySide2.QtCore import Qt
+from PySide2.QtCore import Qt, Slot
 import sys
 
 class MainWindow(QMainWindow):
@@ -85,21 +85,28 @@ class MainWindow(QMainWindow):
         self.save_btn.triggered.connect(self.save_file)
         self.copy_btn.triggered.connect(self.copy_action)
 
-        self.add_asset.triggered.connect(self.add_asset_ui)
-        self.delete_asset.triggered.connect(self.delete_asset_ui)
-        self.update_asset.triggered.connect(self.update_asset_ui)
+        self.add_asset.triggered.connect(self.add_asset_tool)
+        self.delete_asset.triggered.connect(self.delete_asset_tool)
+        self.update_asset.triggered.connect(self.update_asset_tool)
 
-        self.submit_btn.clicked.connect(self.submit_asset_ui)
-        self.toggle_dock.triggered.connect(self.toggle_dock_ui)
+        self.submit_btn.clicked.connect(self.submit_asset)
+        self.toggle_dock.triggered.connect(self.toggle_dock_asset_list)
         
         # dock toolbar
-        self.dock = QDockWidget("Asset List", self)
-        self.dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea | Qt.BottomDockWidgetArea | Qt.TopDockWidgetArea)
+        self.dock = QDockWidget("Asset List")
+
+        self.dock_content = QWidget()
+        self.dock_vbox_layout = QVBoxLayout()
+        # self.dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea | Qt.BottomDockWidgetArea | Qt.TopDockWidgetArea)
         # self.dock.setWidget(QLabel("This is a Dock Widget"))
 
         self.dock_list = QListWidget()
         self.dock_list.addItems(["Tree", "Character", "Vehicle"])
-        self.dock.setWidget(self.dock_list)
+
+        self.dock_vbox_layout.addWidget(self.dock_list)
+        self.dock_content.setLayout(self.dock_vbox_layout)
+
+        self.dock.setWidget(self.dock_content)
 
         self.addDockWidget(Qt.LeftDockWidgetArea, self.dock)
 
@@ -108,41 +115,47 @@ class MainWindow(QMainWindow):
         self.status_bar.showMessage("Ready")
         self.setStatusBar(self.status_bar)
 
-    def submit_asset(self):
-        print("Asset Submitted")
-    
+    @Slot()
     def open_file(self):
         print("File is opening")
         self.status_bar.showMessage("File is opening")
 
+    @Slot()
     def save_file(self):
         print("File is saved.")
         self.status_bar.showMessage("File is saving..")
 
+    @Slot()
     def copy_action(self):
         print("Copied to clipboard.")
         self.status_bar.showMessage("Copied to Clipboard")
     
-    def add_asset_ui(self):
+    @Slot()
+    def add_asset_tool(self):
         print("Asset Added.")
         self.status_bar.showMessage("Asset is created.")
 
-    def delete_asset_ui(self):
+    @Slot()
+    def delete_asset_tool(self):
         print("Asset Deleted .")
         self.status_bar.showMessage("Asset is deleted.")
-
-    def update_asset_ui(self):
+    
+    @Slot()
+    def update_asset_tool(self):
         print("Asset Updated.")
         self.status_bar.showMessage("Asset is Updated.")
-
-    def submit_asset_ui(self):
+    
+    @Slot()
+    def submit_asset(self):
 
         asset = self.asset_line.text()
         type = self.type_line.text()
         print("Asset Submited")
         self.status_bar.showMessage(f"Asset {asset} of type {type} is submitted.")
+        self.dock_list.addItem(f"{asset}")
 
-    def toggle_dock_ui(self):
+    @Slot()
+    def toggle_dock_asset_list(self):
         is_visible = self.dock.isVisible()
         self.dock.setVisible(not is_visible)
         self.status_bar.showMessage("Dock is Toggled")

@@ -1,7 +1,7 @@
 # Toolbar with Actions for Asset Management
 import sys
 from PySide2.QtWidgets import (
-    QApplication, QMainWindow, QLabel, QTextEdit, QDockWidget, QToolBar, QAction, QStatusBar
+    QApplication, QMainWindow, QWidget, QLabel, QTextEdit,QToolBar, QAction, QStatusBar, QVBoxLayout, QPushButton
 )
 
 class MainWindow(QMainWindow):
@@ -24,7 +24,14 @@ class MainWindow(QMainWindow):
         self.tool_bar.addAction(self.delete_asset)
 
         # central widget 
-        self.central_widget = QLabel("Welcome to the Asset Manager")
+        self.central_widget = QWidget()
+
+        self.widget_layout = QVBoxLayout()
+        self.widget_label = QLabel("Welcome to the Asset Manager")
+    
+        self.widget_layout.addWidget(self.widget_label)
+
+        self.central_widget.setLayout(self.widget_layout)
         self.setCentralWidget(self.central_widget)
 
         # Status bar  

@@ -1,8 +1,7 @@
 from PySide2.QtWidgets import (
-    QApplication, QMainWindow, QLabel, QDockWidget, QToolBar, QAction, QWidget, QSplitter, QSpinBox,
-    QStatusBar, QVBoxLayout, QPushButton, QFormLayout, QScrollArea, QDoubleSpinBox, QTreeView, QListView, QTableView, QFileDialog, QColorDialog, QFontDialog
+    QApplication, QMainWindow, QLabel, QDockWidget, QToolBar, QAction, QWidget, QSplitter, QSpinBox,QStatusBar, QVBoxLayout, QPushButton, QFormLayout, QScrollArea, QDoubleSpinBox, QTreeView, QListView, QTableView, QFileDialog, QColorDialog, QFontDialog
 )
-from PySide2.QtCore import Qt, QStringListModel
+from PySide2.QtCore import Qt, QStringListModel, Slot
 from PySide2.QtGui import QStandardItemModel, QStandardItem, QPixmap
 import sys
 
@@ -15,11 +14,11 @@ class MainWindow(QMainWindow):
     def initUI(self):
         self.setWindowTitle("VFX Utility Panel")
         self.setGeometry(200, 200, 820, 650)
-        self.menubar()              # menu bar 
-        self.toolbar()              # toolbar
-        self.central_widget()       # central widget
+        self.menubar()                      # menu bar 
+        self.toolbar()                      # toolbar
+        self.central_main_widget()          # central widget
 
-        self.status_bar()           # status bar   
+        self.status_bar()                   # status bar   
 
     def menubar(self):
         self.menu_bar = self.menuBar()
@@ -47,18 +46,24 @@ class MainWindow(QMainWindow):
         # connections 
         self.add_exit.triggered.connect(self.close)
 
-    def central_widget(self):
+    def central_main_widget(self):
+        self.central_widget = QWidget()
+        self.central_layout = QVBoxLayout()
+
         self.splitter_central = QSplitter(Qt.Horizontal)
 
         self.editor1 = self.main_dock_widget()
-        self.editor2 = self.scroll_area_ui()
+        self.editor2 = self.scroll_area_widget()
 
         self.splitter_central.addWidget(self.editor1)
         self.splitter_central.addWidget(self.editor2)
 
         self.splitter_central.setSizes([250, 450])
+        self.central_layout.addWidget(self.splitter_central)
 
-        self.setCentralWidget(self.splitter_central)
+        self.central_widget.setLayout(self.central_layout)
+
+        self.setCentralWidget(self.central_widget)
 
     # Left Side Widget 
     def main_dock_widget(self):
@@ -127,7 +132,7 @@ class MainWindow(QMainWindow):
         self.dock_layout.addWidget(self.table_view)
 
     # Right Widget
-    def scroll_area_ui(self):
+    def scroll_area_widget(self):
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
 
@@ -171,6 +176,7 @@ class MainWindow(QMainWindow):
         self.choose_color_btn.clicked.connect(self.select_color)  
         self.choose_font_btn.clicked.connect(self.select_font)  
 
+    @Slot()
     def load_image(self):
         file_name, _ = QFileDialog.getOpenFileName(
             self,
@@ -191,6 +197,7 @@ class MainWindow(QMainWindow):
                 print(f"Loaded File: {file_name}")
                 self.statusbar.showMessage(f"Loaded File: {file_name}")
 
+    @Slot()
     def select_color(self):
         color = QColorDialog.getColor()
         if color.isValid():
@@ -209,6 +216,7 @@ class MainWindow(QMainWindow):
 
             self.statusBar().showMessage(f"Color Applied {color.name()}")
 
+    @Slot()
     def select_font(self):
         ok, font = QFontDialog.getFont()
         if ok:

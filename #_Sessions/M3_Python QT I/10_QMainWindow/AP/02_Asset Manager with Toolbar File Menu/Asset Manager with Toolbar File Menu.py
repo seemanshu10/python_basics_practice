@@ -2,8 +2,10 @@
 # Toolbar with Actions for Asset Management
 import sys
 from PySide2.QtWidgets import (
-    QApplication, QMainWindow, QLabel, QStatusBar, 
+    QApplication, QMainWindow, QLabel, QStatusBar, QWidget, QVBoxLayout
 )
+
+from PySide2.QtCore import Slot
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -12,7 +14,7 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
 
-        self.setWindowTitle("Asset Manager")
+        self.setWindowTitle("Asset Management")
         self.setGeometry(200, 200, 800, 600)
 
         # menu bar 
@@ -26,7 +28,12 @@ class MainWindow(QMainWindow):
         self.save_btn.setShortcut("Ctrl+S")
 
         # central widget 
-        self.central_widget = QLabel("Welcome to the Asset Manager")
+        self.central_widget = QWidget()
+        self.central_layout = QVBoxLayout()
+        self.label_widget = QLabel("Asset Manager Dashboard")
+
+        self.central_layout.addWidget(self.label_widget)
+        self.central_widget.setLayout(self.central_layout)
         self.setCentralWidget(self.central_widget)
 
         # Status bar  
@@ -38,10 +45,12 @@ class MainWindow(QMainWindow):
         self.open_btn.triggered.connect(self.open_asset)
         self.save_btn.triggered.connect(self.save_asset)
 
+    @Slot()
     def open_asset(self):
         print("Opening Asset...")
         self.status_bar.showMessage("Opening Asset...")
 
+    @Slot()
     def save_asset(self):
         print("Save Asset.")
         self.status_bar.showMessage("Saving Asset")

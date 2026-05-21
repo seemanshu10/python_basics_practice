@@ -2,12 +2,14 @@ import sys
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
+    QVBoxLayout,
     QTextEdit,
     QAction,
     QToolBar,
     QDockWidget,
     QLabel,
-    QStatusBar
+    QStatusBar, 
+    QWidget
 )
 from PySide2.QtCore import Qt
 import qdarkstyle
@@ -22,9 +24,15 @@ class MainWindow(QMainWindow):
         self.resize(900, 600)
 
         # Central Widget
+        self.central_widget = QWidget()
+        self.central_widget_layout = QVBoxLayout()
+
         self.text_editor = QTextEdit()
         self.text_editor.setPlaceholderText("Type something here...")
-        self.setCentralWidget(self.text_editor)
+        
+        self.central_widget_layout.addWidget(self.text_editor)
+        self.central_widget.setLayout(self.central_widget_layout)
+        self.setCentralWidget(self.central_widget)
 
         self.clear_action = QAction("Clear", self)
         self.exit_action = QAction("Exit", self)
@@ -54,7 +62,7 @@ class MainWindow(QMainWindow):
         toolbar.addAction(self.exit_action)
 
         # Dock Widget
-
+        
         self.dock = QDockWidget("Inspector", self)
         self.dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
 
@@ -72,9 +80,9 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage("Ready")
 
         # Connections
-        self.toggle_dock.triggered.connect(self.toggle_dock_ui)
+        self.toggle_dock.triggered.connect(self.toggle_dock_visibilty)
 
-    def toggle_dock_ui(self):
+    def toggle_dock_visibilty(self):
         is_visible = self.dock.isVisible()
         self.dock.setVisible(not is_visible)
         self.statusBar().showMessage("Dock is toggled.")
