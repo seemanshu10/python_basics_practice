@@ -9,7 +9,7 @@ from PySide2.QtWidgets import (
     QLineEdit,
     QInputDialog
 )
-
+from PySide2.QtCore import Slot
 
 class InputDialogWindow(QWidget):
     def __init__(self):
@@ -53,7 +53,8 @@ class InputDialogWindow(QWidget):
         # item, ok = QInputDialog.getItem(self, "Select Engine", "Choose Render Engine:", ["Arnold", "Redshift", "VRay"])
 
         self.setLayout(self.main_layout)
-        
+    
+    @Slot()
     def ask_for_name(self):
         # getText
         text, ok = QInputDialog.getText(self, "Input", "Enter your name:")
@@ -64,6 +65,7 @@ class InputDialogWindow(QWidget):
         else:
             print("File Input Canceled ")
 
+    @Slot()
     def ask_for_frame(self):
         frame, ok = QInputDialog.getInt(self, "Input", "Enter Frame Number:")
     
@@ -73,6 +75,7 @@ class InputDialogWindow(QWidget):
         else:
             print("Frame Input Canceled ")
 
+    @Slot()
     def ask_for_opacity(self):
         opacity, ok = QInputDialog.getDouble(self,  "Input", "Enter opacity value:")
     
@@ -82,6 +85,7 @@ class InputDialogWindow(QWidget):
         else:
             print("Opacity Input Canceled ")
 
+    @Slot()
     def ask_for_render_engine(self):
         item, ok = QInputDialog.getItem(self, "Select Engine", "Choose Render Engine:", ["Arnold", "Redshift", "VRay"])
     
@@ -91,6 +95,7 @@ class InputDialogWindow(QWidget):
         else:
             print("Render Engine Input Canceled ")
 
+    @Slot()
     def ask_for_shot(self):
         dialog = QInputDialog(self)
         dialog.setLabelText("Enter shot number:")

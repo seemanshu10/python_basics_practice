@@ -7,11 +7,13 @@ from PySide2.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QPushButton,
-    QLineEdit,
-    QInputDialog,
+    QLabel,
+    QFileDialog,
+    
 )
 
-
+from PySide2.QtGui import QPixmap
+from PySide2.QtCore import Slot
 class PixmapDialogWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -20,61 +22,52 @@ class PixmapDialogWindow(QWidget):
         self.resize(300, 400)
         self.main_layout = QVBoxLayout()
         # buittons
+        self.image_label = QLabel()
+        self.image_label.setStyleSheet("QLabel { background-color: black; border: 1px solid #ccc; }")
         self.load_button = QPushButton("Load Image")
         self.save_button = QPushButton("Save Cropped Image ")
         
+        self.main_layout.addWidget(self.image_label)
         self.main_layout.addWidget(self.load_button)
         self.main_layout.addWidget(self.save_button)
         
         # Input Dialog 
-        self.load_button.clicked.connect(self.ask_for_image)
-        self.save_button.clicked.connect(self.ask_for_frame)
+        self.load_button.clicked.connect(self.load_image_file)
+        self.save_button.clicked.connect(self.cropped_image_file)
 
         self.setLayout(self.main_layout)
-        
-    def ask_for_image(self):
+
+    @Slot()
+    def load_image_file(self):
         # getText
-        text, ok = QInputDialog.getText(self, "Input", "Enter your name:")
-        
+        file_path, ok = QFileDialog.getOpenFileName(
+            self,
+            "Select an Image File?",
+            "",
+            "Images (*.png *.jpg *.exr)"
+        )
+
         if ok:
-            print(f"Name : {text}")
-            self.name_line.setText(f"{text}")
+            if file_path:
+
+                self.pixmap = QPixmap(file_path)
+                self.pixmap.load(file_path)                             # load
+            if not self.pixmap.isNull():                                # isNull
+                scaled = self.pixmap.scaled(500, 500)                   # scaled
+                print(self.pixmap.width(), self.pixmap.height())        # width, height
+                self.image_label.setPixmap(scaled)
+                # cropped = self.pixmap.copy(50, 50, 100, 100)          # copy
+                # cropped.save("cropped.jpg")        
+                
         else:
             print("File Input Canceled ")
 
-    def ask_for_frame(self):
-        frame, ok = QInputDialog.getInt(self, "Input", "Enter Frame Number:")
-    
-        if ok:
-            print(f"Frame Number : {frame}")
-            self.frame_line.setText(f"{frame}")
-        else:
-            print("Frame Input Canceled ")
-
-    def ask_for_opacity(self):
-        opacity, ok = QInputDialog.getDouble(self,  "Input", "Enter opacity value:")
-    
-        if ok:
-            print(f"Opacity : {opacity}")
-            self.opacity_line.setText(f"{opacity}")
-        else:
-            print("Opacity Input Canceled ")
-
-    def ask_for_render_engine(self):
-        item, ok = QInputDialog.getItem(self, "Select Engine", "Choose Render Engine:", ["Arnold", "Redshift", "VRay"])
-    
-        if ok:
-            print(f"Render Engine : {item}")
-            self.render_line.setText(f"{item}")
-        else:
-            print("Render Engine Input Canceled ")
-
-    def ask_for_shot(self):
-        dialog = QInputDialog(self)
-        dialog.setLabelText("Enter shot number:")
-        dialog.textValueChanged.connect(lambda text: print("Changed:", text))  # textValueChanged
-        dialog.textValueSelected.connect(lambda text: print("Selected:", text))  # textValueSelected
-        dialog.exec_()
+    @Slot()
+    def cropped_image_file(self):
+        cropped_image = self.pixmap.copy(100, 100, 200, 300)
+        self.image_label.setPixmap(cropped_image)
+        cropped_image.save("cropped_output.jpg")
+        
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

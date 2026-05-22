@@ -8,6 +8,7 @@ from PySide2.QtWidgets import (
     QLabel,
     QMessageBox
 )
+from PySide2.QtCore import Slot
 
 class MessageBoxWindow(QWidget):
     def __init__(self):
@@ -30,6 +31,7 @@ class MessageBoxWindow(QWidget):
         # Button connection
         self.render_button.clicked.connect(self.show_message_box)
 
+    @Slot()
     def show_message_box(self):
         # Create custom QFileDialog
         dialog = QMessageBox(self)
@@ -45,7 +47,6 @@ class MessageBoxWindow(QWidget):
         dialog.setStyleSheet("QFileDialog { font-size: 14px; }")
 
         # connect a  signal
-
         dialog.buttonClicked.connect(lambda b: print("Button clicked:", b.text()))
 
         dialog.exec_()

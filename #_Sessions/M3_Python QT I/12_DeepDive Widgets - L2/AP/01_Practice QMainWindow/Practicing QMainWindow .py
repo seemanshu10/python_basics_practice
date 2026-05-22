@@ -11,7 +11,7 @@ from PySide2.QtWidgets import (
     QStatusBar, 
     QWidget
 )
-from PySide2.QtCore import Qt
+from PySide2.QtCore import Qt, Slot
 import qdarkstyle
 
 class MainWindow(QMainWindow):
@@ -41,7 +41,6 @@ class MainWindow(QMainWindow):
         self.exit_action.triggered.connect(self.close)
 
         # Menu Bar
-
         menu_bar = self.menuBar()
 
         # File Menu
@@ -62,35 +61,40 @@ class MainWindow(QMainWindow):
         toolbar.addAction(self.exit_action)
 
         # Dock Widget
-        
         self.dock = QDockWidget("Inspector", self)
         self.dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
 
-        inspector_label = QLabel("Properties Panel")
-        inspector_label.setAlignment(Qt.AlignCenter)
+        self.dock_content = QWidget()
+        self.vbox_loyout = QVBoxLayout()
 
-        self.dock.setWidget(inspector_label)
+        self.inspector_label = QLabel("Properties Panel")
+        self.inspector_label.setAlignment(Qt.AlignCenter)
+        self.vbox_loyout.addWidget(self.inspector_label)
+        self.dock_content.setLayout(self.vbox_loyout)
 
+        self.dock.setWidget(self.dock_content)
         self.addDockWidget(Qt.RightDockWidgetArea, self.dock)
 
         # Status Bar
         status_bar = QStatusBar()
         self.setStatusBar(status_bar)
-
         self.statusBar().showMessage("Ready")
 
         # Connections
         self.toggle_dock.triggered.connect(self.toggle_dock_visibilty)
 
+    @Slot()
     def toggle_dock_visibilty(self):
         is_visible = self.dock.isVisible()
         self.dock.setVisible(not is_visible)
         self.statusBar().showMessage("Dock is toggled.")
 
+    @Slot()
     def clear_editor(self):
         self.text_editor.clear()
         self.statusBar().showMessage("Editor cleared")
 
+    @Slot()
     def apply_dark_theme(self):
         dark_style_sheet = qdarkstyle.load_stylesheet_pyside2()
         self.setStyleSheet(dark_style_sheet)

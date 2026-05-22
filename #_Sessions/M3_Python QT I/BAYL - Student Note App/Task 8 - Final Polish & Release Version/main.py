@@ -7,6 +7,9 @@ from PySide2.QtGui import QTextCharFormat, QIcon
 from PySide2.QtCore import Qt, Slot
 import sys, os, qtawesome
 
+FILE_PATH = os.path.dirname(os.path.abspath(__file__))
+ICON_FOLDER_PATH = os.path.join(FILE_PATH, "icons")
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -59,21 +62,20 @@ class MainWindow(QMainWindow):
         # self.toolbar.setMovable(False)
         self.addToolBar(self.toolbar)
 
-        self.clear_tool = QAction(QIcon(r"#_Practice\Seemanshu\M3_Python QT I\BAYL - Student Note App\Task 8 - Final Polish & Release Version\icons\folder.png"), "Open", self)
+        self.clear_tool = QAction(QIcon(os.path.join(ICON_FOLDER_PATH, "folder.png")), "Open", self)
         self.toolbar.addAction(self.clear_tool)
 
-        # action = QAction(QIcon("icon.png"), "Open", self)
-        self.save_tool = QAction(QIcon(r"#_Practice\Seemanshu\M3_Python QT I\BAYL - Student Note App\Task 8 - Final Polish & Release Version\icons\save.png"), "Save", self)
+        self.save_tool = QAction(QIcon(os.path.join(ICON_FOLDER_PATH, "save.png")), "Save", self)
         self.toolbar.addAction(self.save_tool)
 
-        self.export_tool = QAction(QIcon(r"#_Practice\Seemanshu\M3_Python QT I\BAYL - Student Note App\Task 8 - Final Polish & Release Version\icons\export.png"), "export", self)
+        self.export_tool = QAction(QIcon(os.path.join(ICON_FOLDER_PATH, "export.png")), "export", self)
         self.toolbar.addAction(self.export_tool)
         self.toolbar.addSeparator()
 
-        self.copy_tool = QAction(QIcon(r"#_Practice\Seemanshu\M3_Python QT I\BAYL - Student Note App\Task 8 - Final Polish & Release Version\icons\copy.png"), "copy", self)
+        self.copy_tool = QAction(QIcon(os.path.join(ICON_FOLDER_PATH, "copy.png")), "copy", self)
         self.toolbar.addAction(self.copy_tool)
 
-        self.paste_tool = QAction(QIcon(r"#_Practice\Seemanshu\M3_Python QT I\BAYL - Student Note App\Task 8 - Final Polish & Release Version\icons\paste.png"), "paste", self)
+        self.paste_tool = QAction(QIcon(os.path.join(ICON_FOLDER_PATH, "paste.png")), "paste", self)
         self.toolbar.addAction(self.paste_tool)
         self.toolbar.addSeparator()
 
@@ -170,7 +172,7 @@ class MainWindow(QMainWindow):
         self.save_btn.triggered.connect(self.save_file)
         self.copy_btn.triggered.connect(self.copy_action)
 
-        self.clear_tool.triggered.connect(self.clear_tool_ui)
+        self.clear_tool.triggered.connect(self.confirm_clear_dialog)
         self.save_tool.triggered.connect(self.save_tool_ui)
         self.export_tool.triggered.connect(self.export_tool_ui)
 
@@ -182,7 +184,7 @@ class MainWindow(QMainWindow):
         self.category_name_line.textChanged.connect(self.category_inputs)
         self.notes_textbox.textChanged.connect(self.notes_inputs)
         self.save_button.clicked.connect(self.confirm_save)
-        self.clear_button.clicked.connect(self.confirm_clear_ui)
+        self.clear_button.clicked.connect(self.confirm_clear_dialog)
 
         self.color_button.clicked.connect(self.choose_color_ui)
         self.font_button.clicked.connect(self.choose_font_ui)
@@ -265,7 +267,7 @@ class MainWindow(QMainWindow):
                 f"Selected color: {self.font_color.name()}"
             )
 
-    def confirm_clear_ui(self):
+    def confirm_clear_dialog(self):
         response = QMessageBox.question(
             None,
             "Clear All Fields. ",
@@ -274,7 +276,7 @@ class MainWindow(QMainWindow):
 
         if response == QMessageBox.Yes:
             print("User confirmed to Clear Feilds.")
-            self.clear_ui()
+            self.clear_line_tool()
         else:
             print("User canceled to clear thew fields.")
 
@@ -296,11 +298,6 @@ class MainWindow(QMainWindow):
     def names_inputs(self):
         name = self.student_name_line.text().strip()
         if name:
-            self.save_button.setEnabled(True)
-        else:
-            self.save_button.setEnabled(False)
-        
-        if name:
             self.status_label.setText(f"Status: Typing name - {name}")
         else:
             self.status_label.setText("Status: Waiting for input")
@@ -309,27 +306,13 @@ class MainWindow(QMainWindow):
     def subject_inputs(self):
         name = self.subject_name_line.text().strip()
         if name:
-            self.save_button.setEnabled(True)
-        else:
-            self.save_button.setEnabled(False)
-        
-        if name:
             self.status_label.setText(f"Status: Typing subject - {name}")
         else:
             self.status_label.setText("Status: Waiting for input")
 
     @Slot()
     def category_inputs(self):
-        print("------")
-        print(self.category_name_line.text(), len(self.category_name_line.text()))
         name = self.category_name_line.text().strip()
-        print(name, len(name))
-
-        if name:
-            self.save_button.setEnabled(True)
-        else:
-            self.save_button.setEnabled(False)
-        
         if name:
             self.status_label.setText(f"Status: Typing Category - {name}")
         else:
@@ -343,13 +326,10 @@ class MainWindow(QMainWindow):
         if note:
             self.save_button.setEnabled(True)
             self.export_button.setEnabled(True)
+            self.status_label.setText(f"Status: Note Updated")
         else:
             self.save_button.setEnabled(False)
             self.export_button.setEnabled(False)
-        
-        if note:
-            self.status_label.setText(f"Status: Note Updated")
-        else:
             self.status_label.setText("Status: Waiting for input")
 
     @Slot()
@@ -357,13 +337,14 @@ class MainWindow(QMainWindow):
         self.status_label.setText("Status: Note Saved Successfully.")
 
     @Slot()
-    def clear_ui(self):
-        self.student_name_line.setText("")
-        self.subject_name_line.setText("")
-        self.category_name_line.setText("")
-        self.notes_textbox.setText("")
+    def clear_line_tool(self):
+        self.student_name_line.clear()
+        self.subject_name_line.clear()
+        self.category_name_line.clear()
+        self.notes_textbox.clear()
 
         self.status_label.setText("Status: All Fields Cleared")
+        self.status_bar.showMessage("All Fields Cleared")
         # self.save_button.setEnabled(False)
 
     def apply_stylesheet(self):

@@ -43,7 +43,6 @@ class MainWindow(QWidget):
         layout.setColumnStretch(0, 1)
         layout.setColumnStretch(1, 3)
 
-
         # Stretch last row
         layout.setRowStretch(3, 1)
         self.setLayout(layout)
