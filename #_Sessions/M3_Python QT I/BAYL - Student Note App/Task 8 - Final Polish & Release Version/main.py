@@ -18,21 +18,28 @@ class MainWindow(QMainWindow):
     def initUI(self):
         self.setWindowTitle("Student Notes Pro")
         self.setGeometry(200, 200, 800, 600)
+        self.setFixedSize(800, 600)
 
         # menu bar 
         self.menu_bar = self.menuBar()
         self.file_menu = self.menu_bar.addMenu("File")
-        self.new_btn = self.file_menu.addAction("New File")
-        self.save_btn = self.file_menu.addAction("Export Note")
+        self.new_file_btn = self.file_menu.addAction("New File/Clear")
+        self.save_file_btn = self.file_menu.addAction("Save Note")
+        self.export_btn = self.file_menu.addAction("Export Note")
         self.file_menu.addSeparator()
         self.exit_btn = self.file_menu.addAction("Exit")
-
+        
         # shortcuts
-        self.new_btn.setShortcut("Ctrl+N")
+        self.new_file_btn.setShortcut("Ctrl+N")
+        self.save_file_btn.setShortcut("Ctrl+S")
+        self.export_btn.setShortcut("Ctrl+Shift+S")
         self.exit_btn.setShortcut("Ctrl+Q")
+        self.save_file_btn.setEnabled(False)
+        self.export_btn.setEnabled(False)
 
-        self.new_btn.setIcon(qtawesome.icon('ei.file-new', color='#2980b9'))
-        self.save_btn.setIcon(qtawesome.icon('fa5s.save', color='#2980b9'))
+        self.new_file_btn.setIcon(qtawesome.icon('ei.file-new', color='#2980b9'))
+        self.save_file_btn.setIcon(qtawesome.icon('fa5s.save', color='#2980b9'))
+        self.export_btn.setIcon(qtawesome.icon('ph.export-bold', color='#2980b9'))
         self.exit_btn.setIcon(qtawesome.icon('mdi.exit-to-app', color="#a71a2d"))
         
         # edit menu 
@@ -46,6 +53,7 @@ class MainWindow(QMainWindow):
         self.copy_btn.setShortcut("Ctrl+C")
         self.paste_btn.setShortcut("Ctrl+V")
         self.titlechange_btn.setShortcut("Ctrl+T")
+
         self.copy_btn.setIcon(qtawesome.icon('fa5.copy', color='#2980b9'))
         self.paste_btn.setIcon(qtawesome.icon('fa6.paste', color='#2980b9'))
         self.titlechange_btn.setIcon(qtawesome.icon('mdi.format-title', color='#2980b9'))
@@ -79,6 +87,9 @@ class MainWindow(QMainWindow):
         self.toolbar.addAction(self.paste_tool)
         self.toolbar.addSeparator()
 
+        self.save_tool.setEnabled(False)
+        self.export_tool.setEnabled(False)
+
         # central widget 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
@@ -86,9 +97,10 @@ class MainWindow(QMainWindow):
         # nested layout 
         self.widget_layout = QVBoxLayout()
         self.title_label = QLabel("Student Notes Pro")
-
+        self.title_label.setAlignment(Qt.AlignCenter)
+        self.title_label.setFixedSize(800, 50)
         self.widget_layout.addWidget(self.title_label, alignment= Qt.AlignCenter)
-        self.title_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        # self.title_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.form_layout = QFormLayout()
 
         self.student_label = QLabel("Name:")
@@ -142,7 +154,6 @@ class MainWindow(QMainWindow):
         # Status layout 
         self.status_label = QLabel("Status: Application Ready")
         self.status_label.setAlignment(Qt.AlignCenter)
-        
         self.widget_layout.addWidget(self.status_label)
 
         # Footer
@@ -156,7 +167,6 @@ class MainWindow(QMainWindow):
         self.status_bar = QStatusBar()
         self.status_bar.showMessage("Ready")
 
-
         # applying StyleSheet
         self.apply_stylesheet()
 
@@ -165,16 +175,27 @@ class MainWindow(QMainWindow):
 
         self.setStatusBar(self.status_bar)
 
+        # Exit button 
+        self.exit_btn.triggered.connect(self.close)
+
     # all connections 
     def all_signals_connector(self):
         # Tool and menu bar connections
-        self.new_btn.triggered.connect(self.open_file)
-        self.save_btn.triggered.connect(self.save_file)
+        self.new_file_btn.triggered.connect(self.open_file)
+        self.save_file_btn.triggered.connect(self.confirm_save)
+        self.export_btn.triggered.connect(self.choose_export_tool)
+        
+        # Copy Paste Action
         self.copy_btn.triggered.connect(self.copy_action)
+        self.paste_btn.triggered.connect(self.paste_action)
+        self.copy_tool.triggered.connect(self.copy_action)
+        self.paste_tool.triggered.connect(self.paste_action)
+        self.titlechange_btn.triggered.connect(self.choose_title_dialog)
+        
+        self.clear_tool.triggered.connect(self.open_file)
+        self.save_tool.triggered.connect(self.confirm_save)
 
-        self.clear_tool.triggered.connect(self.confirm_clear_dialog)
-        self.save_tool.triggered.connect(self.save_tool_ui)
-        self.export_tool.triggered.connect(self.export_tool_ui)
+        self.export_tool.triggered.connect(self.choose_export_tool)
 
         self.about_btn.triggered.connect(self.about_tool_action)
 
@@ -186,11 +207,12 @@ class MainWindow(QMainWindow):
         self.save_button.clicked.connect(self.confirm_save)
         self.clear_button.clicked.connect(self.confirm_clear_dialog)
 
-        self.color_button.clicked.connect(self.choose_color_ui)
-        self.font_button.clicked.connect(self.choose_font_ui)
-        self.title_button.clicked.connect(self.choose_title_ui)
-        self.export_button.clicked.connect(self.choose_export_ui)
+        self.color_button.clicked.connect(self.choose_color_dialog)
+        self.font_button.clicked.connect(self.choose_font_dialog)
+        self.title_button.clicked.connect(self.choose_title_dialog)
+        self.export_button.clicked.connect(self.choose_export_tool)
     
+    @Slot()
     def about_tool_action(self):
         self.about_message = QMessageBox.about(
             None,
@@ -198,10 +220,11 @@ class MainWindow(QMainWindow):
             "Student Notes Pro v1.0\nA Simple Notes App to take notes?"
             )
 
-    def choose_export_ui(self):
-        self.save_file_path, _ = QFileDialog.getSaveFileName(self, "Select File", "", "Text (*.html *.txt)")
+    @Slot()
+    def choose_export_tool(self):
+        self.save_file_path, _ = QFileDialog.getSaveFileName(self, "Select File", "", "Text (*.txt)")
         if self.save_file_path:
-            self.status_label.setText(f"Exported Notes To:\n{self.save_file_path}")
+            
             self.export_notes()
 
     def export_notes(self):
@@ -225,16 +248,24 @@ class MainWindow(QMainWindow):
         with open(self.save_file_path, "w") as export_note:
             export_note.write(export_data)
 
+        self.status_bar.showMessage("Note Saved Successfully.")
+        self.status_label.setText(f"Exported Notes To:\n{self.save_file_path}")
+    
+    @Slot()
     # title change function
-    def choose_title_ui(self):
+    def choose_title_dialog(self):
         
         self.name, ok = QInputDialog.getText(self, "Change notes Title?", "Write New Title?")
         if ok:
             self.title_label.setText(f"{self.name}")
             print(self.name)
 
+        self.status_bar.showMessage("Title Changed Successfully.")
+        self.status_label.setText(f"Title Changed Successfully to: {self.title_label.text()}")
+
+    @Slot()
     # font selection function
-    def choose_font_ui(self):
+    def choose_font_dialog(self):
         ok, self.font_color = QFontDialog.getFont()
         
         if ok:
@@ -247,11 +278,14 @@ class MainWindow(QMainWindow):
             self.notes_textbox.mergeCurrentCharFormat(fmt)
 
             self.status_label.setText(
-                f"Selected color: {self.font_color.family()}"
+                f"Selected Font: {self.font_color.family()}"
             )
-
+        
+        self.status_bar.showMessage("Font Changed.")
+        
+    @Slot()
     # color choose notes function
-    def choose_color_ui(self):
+    def choose_color_dialog(self):
         self.font_color = QColorDialog.getColor()
         if self.font_color.isValid():
             
@@ -267,6 +301,26 @@ class MainWindow(QMainWindow):
                 f"Selected color: {self.font_color.name()}"
             )
 
+        self.status_bar.showMessage("Color Changed Successfully.")
+
+    # new File Dialog function
+    @Slot()
+    def confirm_new_file_dialog(self):
+        response = QMessageBox.question(
+            None,
+            "Opening New Note ",
+            "Are you sure you want to create a new file? " \
+            "All unsaved progress will be lost"
+        )
+
+        if response == QMessageBox.Yes:
+            print("User confirmed to create new fields.")
+            self.clear_line_tool()
+        else:
+            print("User canceled to create new fields.")
+
+    # Clear Dialog function 
+    @Slot()
     def confirm_clear_dialog(self):
         response = QMessageBox.question(
             None,
@@ -280,6 +334,7 @@ class MainWindow(QMainWindow):
         else:
             print("User canceled to clear thew fields.")
 
+    @Slot()
     def confirm_save(self):
         response = QMessageBox.question(
             None,
@@ -326,15 +381,24 @@ class MainWindow(QMainWindow):
         if note:
             self.save_button.setEnabled(True)
             self.export_button.setEnabled(True)
+            self.save_file_btn.setEnabled(True)
+            self.export_btn.setEnabled(True)
+            self.save_tool.setEnabled(True)
+            self.export_tool.setEnabled(True)
             self.status_label.setText(f"Status: Note Updated")
+            
         else:
             self.save_button.setEnabled(False)
             self.export_button.setEnabled(False)
+            self.save_file_btn.setEnabled(False)
+            self.export_btn.setEnabled(False)
+            self.save_tool.setEnabled(False)
+            self.export_tool.setEnabled(False)
             self.status_label.setText("Status: Waiting for input")
 
-    @Slot()
     def save_note(self):
-        self.status_label.setText("Status: Note Saved Successfully.")
+        self.status_label.setText(f"Status: Note Saved for {self.student_name_line.text()}.")
+        self.status_bar.showMessage("Note Saved Successfully.")
 
     @Slot()
     def clear_line_tool(self):
@@ -346,6 +410,22 @@ class MainWindow(QMainWindow):
         self.status_label.setText("Status: All Fields Cleared")
         self.status_bar.showMessage("All Fields Cleared")
         # self.save_button.setEnabled(False)
+ 
+    @Slot()
+    def open_file(self):
+        self.confirm_new_file_dialog()
+        print("New File is opening")
+        self.status_bar.showMessage("New Note Created")
+
+    @Slot()
+    def copy_action(self):
+        print("Copied to clipboard.")
+        self.status_bar.showMessage("Copied to Clipboard")
+
+    @Slot()
+    def paste_action(self):
+        print("Text Pasted.")
+        self.status_bar.showMessage("Text Pasted")
 
     def apply_stylesheet(self):
 
@@ -418,35 +498,10 @@ class MainWindow(QMainWindow):
                 color: #64748b;
             }
         """)
-    
-    def open_file(self):
-        print("File is opening")
-        self.status_bar.showMessage("File is opening")
-
-    def save_file(self):
-        print("File is saved.")
-        self.status_bar.showMessage("File is saving..")
-
-    def copy_action(self):
-        print("Copied to clipboard.")
-        self.status_bar.showMessage("Copied to Clipboard")
-    
-    def clear_tool_ui(self):
-        print("Asset Added.")
-        self.status_bar.showMessage("Asset is created.")
-
-    def save_tool_ui(self):
-        print("Asset Deleted .")
-        self.status_bar.showMessage("Asset is deleted.")
-
-    def export_tool_ui(self):
-        print("Asset Updated.")
-        self.status_bar.showMessage("Asset is Updated.")
+  
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
     window = MainWindow()
     window.show()
-
     sys.exit(app.exec_())
