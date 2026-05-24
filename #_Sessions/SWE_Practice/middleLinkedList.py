@@ -103,6 +103,20 @@ class SinglyLinkedList():
             fast = fast.next.next
 
         return slow
+    
+    def reverse_linked_list(self):
+        temp = self.head
+        prev = None
+
+        while temp is not None:
+            front = temp.next
+            temp.next = prev
+            prev = temp 
+            temp = front
+
+        return prev
+
+
 
 sll = SinglyLinkedList()
 # sll.traverse()
@@ -123,3 +137,7 @@ print(middle_value.value)
 
 sf_middle_value = sll.tortoisehair_middle_linkedlist()
 print(sf_middle_value.value)
+
+reverse = sll.reverse_linked_list()
+# print(reverse.value)
+sll.traverse()
