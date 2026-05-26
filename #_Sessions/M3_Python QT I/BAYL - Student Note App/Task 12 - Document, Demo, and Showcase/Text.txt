@@ -1,0 +1,16 @@
+Name: Seemanshu Verma
+Subject: Python 
+Category: Notes
+
+Notes:
+This  is  a New  Note : 
+
+Python has many differnt data types 
+
+- Int
+- Float
+- str
+- Bool
+- list
+- tuple
+
