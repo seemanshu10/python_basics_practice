@@ -81,6 +81,22 @@ class DoublyLinkedList:
         current.next = new_node
 
 
+    def reverse(self):
+        if self.head.next is None:
+            return self.head
+        
+        current = self.head
+        prev = None
+
+        while current is not None:
+            front = current.next
+            current.next = prev
+            current.prev = front
+            prev = current
+            current = front
+
+        print(prev)
+
 # Driver Code
 dll = DoublyLinkedList()
 
@@ -100,4 +116,6 @@ print("After deleting last node:")
 dll.traverse()
 
 dll.insert_at_index(11, 1)
+dll.traverse()
+dll.reverse()
 dll.traverse()
