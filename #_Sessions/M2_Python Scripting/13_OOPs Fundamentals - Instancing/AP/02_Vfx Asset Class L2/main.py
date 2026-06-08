@@ -26,6 +26,10 @@ class VFXAsset:
         print(f"Asset exported in {format} format")
         print()
 
+    def pipeline_note():
+        print("All VFX assets must follow studio naming conventions.")
+        print()
+
 asset = VFXAsset("Dragon", "Character", 1)
 
 asset.display_info()
@@ -33,6 +37,7 @@ asset.set_version(2)
 asset.publish("Aman", "Modeling")
 asset.export()
 asset.export("fbx")
+VFXAsset.pipeline_note()
 
 # print(asset.__dict__)
 
@@ -43,6 +48,7 @@ asset1.set_version(2)
 asset1.publish("Alice", "Rigging")
 asset1.export()
 asset1.export("usd")
+VFXAsset.pipeline_note()
 
 """
 P/02_Vfx Asset Class L2/main.py"

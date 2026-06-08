@@ -1,7 +1,7 @@
 import sys
 import os
 
-# TODO: use insert for sys.path 
+
 # Multi level packages creation 
 # new AP creation 
 

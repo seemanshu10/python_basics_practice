@@ -1,0 +1,16 @@
+[
+    {
+        "shot_code": "SH002",
+        "status": "not_started",
+        "notes": [
+            "ADD new notes/"
+        ],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH001",
+        "status": "not_started",
+        "notes": [],
+        "tasks": []
+    }
+]

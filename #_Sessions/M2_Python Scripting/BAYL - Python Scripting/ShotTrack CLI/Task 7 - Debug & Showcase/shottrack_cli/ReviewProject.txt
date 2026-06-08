@@ -1,0 +1,38 @@
+- Smartly explain the features 
+- create usage gifs for clubbed feautures(max for 10 sec but less is preferrable )  
+s/w screentogif also edit and remove extra frames and then save 
+- add all the gifs in readme files on features In readme.md
+
+- and then record the video and instead of reading what is written explain key points explain them. 
+MAX - explain video 2 min . 
+Create linkedin post 
+Objective - 
+Showcase What we learned 
+ 1. What project - Waht project worked and what learned from it  
+ 2. Project key Feautures . Small bulleted points 
+ 3. Github repository and give link for that repo. [Public] 
+ 4. Video + gifs
+
+add video after aprroval to youtube
+showcase personal thoughts 
+
+-- Work on personal project 
+- should not be complicated. Small simple project.
+
+- list of all tha projects whichever done till now.
+
+BAYL Project 
+Project: Shot track CLI Tool 
+Learned : 
+- Processing and structuring shot data into JSON files for efficient tracking and management
+- Executing and automating workflows using CLI commands and .bat scripts
+
+Project Key-Features - 
+- Centralized handling of all operations on shot tracking JSON data
+- Easy creation, updating, and status management of shots
+- Support for managing notes and tasks (create, update, delete)
+- Filtering system to quickly view shots by status (Pending, Completed, Review)
+- Automatic generation of daily reports with detailed shot information, executable via dailyReport.bat
+
+Github Link - https://github.com/seemanshu10/shot-track-cli-tool
+Video Link -  https://vimeo.com/1186633506?share=copy&fl=sv&fe=ci

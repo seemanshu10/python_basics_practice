@@ -1,0 +1,34 @@
+[
+    {
+        "shot_code": "SH010",
+        "status": "review",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH001",
+        "status": "in_progress",
+        "notes": [
+            "Need Light cleanup.",
+            "Need comp cleanup."
+        ],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "clear up the rotot tasks",
+                "status": "Not started"
+            },
+            {
+                "id": 2,
+                "title": "clear up the rotot tasks",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH000",
+        "status": "not_started",
+        "notes": [],
+        "tasks": []
+    }
+]

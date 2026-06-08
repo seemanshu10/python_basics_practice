@@ -154,7 +154,7 @@ def generate_reports(total_questions, correct_answer_count, wrong_answer_count):
     print("Report card generated successfully.")
 
 # Main QuizApp code 
-def quizz_app():
+def quizz_App():
     """
     Main controller function for the Quiz App.
     """
@@ -174,4 +174,4 @@ def quizz_app():
         print("\nExiting Cleanly!") 
 
 
-quizz_app()
+quizz_App()

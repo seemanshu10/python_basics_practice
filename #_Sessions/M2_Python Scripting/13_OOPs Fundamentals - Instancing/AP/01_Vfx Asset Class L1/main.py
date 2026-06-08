@@ -31,6 +31,7 @@ asset.publish("Alice", "compositing")
 asset.export()
 asset.export("fbx")
 
+
 """
 Asset Name: DefaultAsset
 Asset Type: Prop

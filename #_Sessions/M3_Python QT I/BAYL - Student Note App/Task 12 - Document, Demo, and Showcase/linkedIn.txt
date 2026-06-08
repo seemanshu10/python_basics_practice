@@ -1,0 +1,29 @@
+Just completed Student Notes Pro — a desktop notes app built with Python & PySide2! 🖥️
+
+Started with a simple question: “Can I build a clean desktop app students would actually use?”
+
+What it does:
+- Add student name, subject, category, and note content
+- Rich text editor with font & color customization
+- Save notes and export as `.txt`
+- Toolbar/menu shortcuts, confirmation dialogs, and live status bar
+
+What I learned:
+- Building a full PySide2 app with `QMainWindow`, layouts, and widgets
+- Wiring signals & slots for responsive UI behavior
+- Using file dialogs (color, font, save) to improve usability
+- Applying external CSS stylesheets for a polished look
+- When to use Qt Designer vs code-based UI (Designer = quick prototypes, code = complex tools)
+- Modal vs modeless dialogs, and the Qta-browser CLI for custom icons
+
+What's next:
+- Notes history & loading saved notes for editing
+- Full text formatting (bold, italic, indentation)
+
+Tech: Python · PySide2 · QtAwesome · CSS
+
+This project made desktop GUI development feel real, not just practice.
+
+Thanks to Akash and the GamutX team for the guidance throughout this project!
+
+#Python #PySide2 #Qt #DesktopApplication #GUI #StudentProjects #PythonProjects

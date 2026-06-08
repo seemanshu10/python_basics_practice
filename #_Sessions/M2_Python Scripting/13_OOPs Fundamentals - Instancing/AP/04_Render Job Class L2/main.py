@@ -1,4 +1,6 @@
 class RenderJob:
+    frame_number = 1001 # class 
+
     def __init__(self, job_name, renderer, status):
         self.job_name = job_name
         self.renderer = renderer
@@ -30,6 +32,7 @@ asset.set_frame_range("1-120")
 asset.submit_render("Riya", "High")
 asset.output()
 asset.output("png")
+
 RenderJob.render_note()
 
 """

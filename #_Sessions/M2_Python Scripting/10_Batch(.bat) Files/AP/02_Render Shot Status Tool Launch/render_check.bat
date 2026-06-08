@@ -4,5 +4,4 @@
 ::python "%~dp0check_render.py" %* 
 
 python  "%~dp0check_render.py" %*
-
 pause

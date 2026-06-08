@@ -1,0 +1,131 @@
+[
+    {
+        "shot_code": "SH010",
+        "status": "in_progress",
+        "notes": [
+            "ADD new notes/",
+            "ADD new notes/"
+        ],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Roto cleanup",
+                "status": "done"
+            },
+            {
+                "id": 3,
+                "title": "Comp fix",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH011",
+        "status": "hold",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Light comp fix.",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH012",
+        "status": "review",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Light fix needed.",
+                "status": "done"
+            },
+            {
+                "id": 2,
+                "title": "comp fix.",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH013",
+        "status": "review",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "comp fix.",
+                "status": "done"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH014",
+        "status": "approved",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "comp fix.",
+                "status": "done"
+            },
+            {
+                "id": 2,
+                "title": "comp fix.",
+                "status": "hold"
+            },
+            {
+                "id": 3,
+                "title": "comp fix.",
+                "status": "in_progress"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH015",
+        "status": "in_progress",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH016",
+        "status": "not_started",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "comp fix.",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH003",
+        "status": "not_started",
+        "notes": [
+            "ADD new notes/"
+        ],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH001",
+        "status": "approved",
+        "notes": [
+            "ADD new notes/"
+        ],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH002",
+        "status": "hold",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH0030",
+        "status": "not_started",
+        "notes": [],
+        "tasks": []
+    }
+]

@@ -1,0 +1,31 @@
+Just completed ShotTrack CLI — a lightweight Python tool for managing VFX shots from the terminal 
+
+Started with a simple question: “Can I build a practical shot tracker for artists and small teams without heavy production software?”
+
+What it does:
+- Add & manage VFX shots with validated naming (e.g. SH010)
+- Track statuses: not_started → in_progress → review → approved / hold
+- Add notes and tasks per shot, mark tasks done
+- Filter shots by status, export daily Markdown reports
+- Run via CLI or `.bat` shortcuts
+
+What I learned:
+- Structuring a Python project into modules instead of one big file
+- JSON-based persistent local storage
+- Designing commands that feel natural from the terminal
+- Enforcing validation (naming rules, allowed statuses) makes tools robust
+- Small UX touches like `.bat` shortcuts make a big difference
+- Even “simple” production tools need real planning
+
+What's next:
+- Artist assignment & due dates
+- Colored terminal output
+- Multi-project support
+
+Tech: Python · JSON · CLI · Markdown
+
+Seeing a basic script evolve into something that feels usable for real production workflows was genuinely satisfying.
+
+Thanks to Akash for the guidance throughout this project!
+
+#Python #CLI #VFX #PipelineTD #SoftwareDevelopment #PythonProjects

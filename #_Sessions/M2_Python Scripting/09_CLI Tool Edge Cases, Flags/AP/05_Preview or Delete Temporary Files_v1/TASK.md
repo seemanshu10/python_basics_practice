@@ -25,6 +25,18 @@ In this task, you will:
   * Remove the files when delete mode is selected.
   * If the flag is invalid or arguments are missing, the program should display an error message.
 
+  
+
+Updates :
+Preview the subfolder names of the files
+
+Extension to be deleted from user input
+
+total count of files deleted 
+
+found : <number> ,deleted <number>
+
+
 ### Folder Structure
 
 ```
@@ -119,11 +131,3 @@ Output:
 ```
 Error: Directory not found.
 ```
-
-"""
-Updates :
-Preview the subfolder names of the files 
-Extension to be deleted from user input
-total count of files deleted 
-found : <number> ,deleted <number>
-"""

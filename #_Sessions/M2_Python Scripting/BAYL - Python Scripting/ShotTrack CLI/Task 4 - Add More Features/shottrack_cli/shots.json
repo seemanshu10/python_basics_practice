@@ -1,0 +1,102 @@
+[
+    {
+        "shot_code": "SH010",
+        "status": "done",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Roto cleanup",
+                "status": "done"
+            },
+            {
+                "id": 3,
+                "title": "Comp fix",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH011",
+        "status": "hold",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Light comp fix.",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH012",
+        "status": "review",
+        "notes": [],
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Light fix needed.",
+                "status": "Not started"
+            },
+            {
+                "id": 2,
+                "title": "comp fix.",
+                "status": "Not started"
+            }
+        ]
+    },
+    {
+        "shot_code": "SH013",
+        "status": "review",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH014",
+        "status": "approved",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH015",
+        "status": "in_progress",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH016",
+        "status": "not_started",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH003",
+        "status": "not_started",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH001",
+        "status": "approved",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH002",
+        "status": "hold",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "SH0030",
+        "status": "not_started",
+        "notes": [],
+        "tasks": []
+    },
+    {
+        "shot_code": "sh114",
+        "status": "not_started",
+        "notes": [],
+        "tasks": []
+    }
+]

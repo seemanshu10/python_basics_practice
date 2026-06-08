@@ -1,7 +1,7 @@
 import sys, os
 
 # dynamic path take sys. path 
-# TODO: complete the AP with the respective functions  
+
 
 package_path = os.path.dirname(os.path.abspath(__file__))
 
