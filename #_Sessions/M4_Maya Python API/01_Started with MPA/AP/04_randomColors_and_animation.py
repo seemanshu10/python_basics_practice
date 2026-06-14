@@ -39,4 +39,16 @@ for i in range(number_of_duplicates):
     # Parent under group
     cmds.parent(sphere_obj, group_create)
 
+    cmds.setKeyframe(sphere_obj, attribute="translateX", time=1, value=0)
+    cmds.setKeyframe(sphere_obj, attribute="translateX", time=24, value=x)
+    cmds.setKeyframe(sphere_obj, attribute="translateX", time=48, value=0)
+
+    cmds.setKeyframe(sphere_obj, attribute="translateY", time=1, value=0)
+    cmds.setKeyframe(sphere_obj, attribute="translateY", time=24, value=y)
+    cmds.setKeyframe(sphere_obj, attribute="translateY", time=48, value=0)
+
+    cmds.setKeyframe(sphere_obj, attribute="translateZ", time=1, value=0)
+    cmds.setKeyframe(sphere_obj, attribute="translateZ", time=24, value=z)
+    cmds.setKeyframe(sphere_obj, attribute="translateZ", time=48, value=0)
+
 print("Created {} sphere_objects with unique Lambert shaders and random colors.".format(number_of_duplicates))
