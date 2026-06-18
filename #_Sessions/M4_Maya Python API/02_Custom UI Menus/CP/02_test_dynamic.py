@@ -14,7 +14,7 @@ def populate_select_object_menu(*args):
 
 if cmds.menu(MAIN_MENU, exists=True):
     cmds.deleteUI(MAIN_MENU)
-cmds.menu(MAIN_MENU, label="Test_menu", parent="MayaWindow",tearOff=True)
-cmds.menuItem(SELECT_SUBMENU, label="Select Object",parent=MAIN_MENU,subMenu=True)
+cmds.menu(MAIN_MENU, label="Test_menu", parent="MayaWindow", tearOff=True)
+cmds.menuItem(SELECT_SUBMENU, label="Select Object", parent=MAIN_MENU, subMenu=True)
 
 populate_select_object_menu()

@@ -11,4 +11,3 @@ cmds.menuItem(label = "Shots")
 cmds.menuItem(label = "Set Shot Camera")
 cmds.menuItem(label = "Rename Shot")
 cmds.menuItem(label = "Export Shot")
-

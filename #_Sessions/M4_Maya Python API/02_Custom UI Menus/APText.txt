@@ -1,0 +1,12 @@
+Qapplication is already there that is why it crashes in maya as it clashes 
+
+Fetch OpenMayaUI.MQtUtil - c++ object
+WrapInstance 
+cmds.workspace cOntrol -  
+
+Workspace Control Example try if that works 
+take the cofe frpm 
+
+1 AP Existing Pyside ui load in maya in custom menu 
+2 AP Go Online gather maya pyside tools and create these as a custom menu and launch in maya.  
+3. 

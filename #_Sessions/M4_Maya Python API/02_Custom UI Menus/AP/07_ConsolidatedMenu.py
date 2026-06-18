@@ -117,5 +117,14 @@ def custom_main_menu():
     cmds.menuItem(label = "Spehres_Circular", command = circle_placement )
     cmds.menuItem(label = "Random Placement", command = random_placement)
     cmds.menuItem(label = "Random Color", command = random_color)
+    cmds.menuItem( divider=True )
+    cmds.menuItem(label = "RandomVisible", visible = False)    
+    cmds.menuItem(label = "RandomEnable", enable = False)    
+    cmds.menuItem(label = "RandomCheckbox", checkBox = True)
+
+    cmds.radioMenuItemCollection()
+    cmds.menuItem( label='Yes', radioButton=False )
+    cmds.menuItem( label='Maybe', radioButton=False )
+    #cmds.menuItem(label = "RandomRadio", radioButton = True)    
 
 custom_main_menu()
