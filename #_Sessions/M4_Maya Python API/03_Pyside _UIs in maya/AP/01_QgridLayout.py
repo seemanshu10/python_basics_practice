@@ -4,6 +4,7 @@ from PySide2.QtWidgets import (
 from PySide2.QtCore import Qt
 from maya import OpenMayaUI as omui
 import shiboken2
+import maya.cmds as cmds 
 
 def get_maya_main_window():
     main_window_ptr = omui.MQtUtil.mainWindow()
@@ -55,9 +56,8 @@ class MainWindow(QMainWindow):
         layout.setRowStretch(3, 1)
         centralWidget.setLayout(layout)
 
-def show_grid_window():
+def show_grid_window(*args):
     global my_window
-
     try:
         my_window.close()
         my_window.deleteLater()
@@ -68,4 +68,11 @@ def show_grid_window():
     my_window = MainWindow(parent=maya_main_window)
     my_window.show()
 
-show_grid_window()
+def custom_main_menu():
+    if cmds.menu("Command", exists=True):
+        cmds.deleteUI("Command", menu=True)
+
+    cmds.menu("Command",label="Command", parent="MayaWindow")
+    cmds.menuItem(label="Grid Layout", command=show_grid_window)
+
+custom_main_menu()
